@@ -10,10 +10,7 @@ Utilisateurs :
 - Encoder une commande pour un client
 - Facturer une/des commandes client
 - Gérer le stock (voir les quantités disponibles / modifier le stock / gérer les prix des produits)
-- Abonner le client a une newsletter ou notification en cas de restock d’un article spécifique
-(pattern observer +API email).
-- Passer commandes auprès du fournisseur par mail (création et envoi du mail contenant la 
-liste des articles et leur produit) (API email).
+- Proposition de produits "du moment" selon la météo 
 - Créer alerte si stock d’un produit atteint une certaine limite.
 - Mettre en place une limite de stock pour un produit spécifique et commander 
 automatiquement si le stock descend en dessous de cette limite.
