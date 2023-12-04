@@ -2,18 +2,17 @@ package be.heh.g2.adapter.web;
 
 import be.heh.g2.application.domain.model.Product;
 import be.heh.g2.application.port.in.ProductManagementUseCase;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin
 @RestController
-public class ProductControler {
+public class ProductController {
 
     private ProductManagementUseCase productManagementUseCase;
 
-    public  ProductControler(ProductManagementUseCase productManagementUseCase){
+    public ProductController(ProductManagementUseCase productManagementUseCase){
         this.productManagementUseCase=productManagementUseCase;
 
     }

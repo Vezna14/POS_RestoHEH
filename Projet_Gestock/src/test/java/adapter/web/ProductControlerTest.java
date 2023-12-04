@@ -1,6 +1,6 @@
 package adapter.web;
 
-import be.heh.g2.adapter.web.ProductControler;
+import be.heh.g2.adapter.web.ProductController;
 import be.heh.g2.application.domain.model.Product;
 import be.heh.g2.application.port.in.ProductManagementUseCase;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 
 @SpringBootTest
-@WebMvcTest(controllers = ProductControler.class)
+@WebMvcTest(controllers = ProductController.class)
 public class ProductControlerTest {
     private ProductManagementUseCase productManagementUseCase;
 
