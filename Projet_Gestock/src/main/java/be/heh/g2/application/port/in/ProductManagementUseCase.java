@@ -9,6 +9,7 @@ public interface ProductManagementUseCase {
     public List<Product> getAllProduct();
 
     public void createProduct(String name, double price, String category, int stock, String photo);
+    public void createProduct(Product productToAdd);
 
     public void modifyProductQuantity(long id, int new_quantity);
 

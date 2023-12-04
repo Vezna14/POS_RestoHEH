@@ -3,7 +3,7 @@ package application.domain.service;
 
 import be.heh.g2.application.domain.model.Product;
 import be.heh.g2.application.domain.service.ProductManagementImpl;
-import be.heh.g2.application.port.out.ProductRepository;
+import be.heh.g2.application.port.out.IProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -21,14 +21,14 @@ public class ProductManagerImplTest {
     public static List<Product> products_list;
     public static ArrayList<String> category_list;
     private ProductManagementImpl product_manager_impl;
-    private ProductRepository product_repository;
+    private IProductRepository product_repository;
 
     @BeforeEach
     public void setup() {
         //créer un liste de produit pour simuler bdd ( que 2 produits )
         category_list= new ArrayList<>(Arrays.asList("boisson","soft"));
         products_list = new ArrayList<>(Arrays.asList(new Product(1,"product1", 2.5,category_list,1,"srcImg"),new Product(2,"product2", 3,category_list,1,"srcImg")));
-        product_repository = Mockito.mock(ProductRepository.class); //Bouchon
+        product_repository = Mockito.mock(IProductRepository.class); //Bouchon
         product_manager_impl = new ProductManagementImpl(product_repository);
 
     }

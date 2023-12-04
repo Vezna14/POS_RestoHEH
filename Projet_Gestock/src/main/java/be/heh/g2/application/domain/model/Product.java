@@ -33,6 +33,17 @@ public class Product {
 
     }
 
+    public Product(long id, String name, double price,String category, int stock, String photo) {
+        this.id=id;
+        this.name = name;
+        this.price = price;
+        this.category=new ArrayList<String>();
+        this.category.add(category);
+        this.stock=stock;
+        this.photo=photo;
+
+    }
+
     // Getters et setters
 
     public String getName() {
@@ -73,5 +84,13 @@ public class Product {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
