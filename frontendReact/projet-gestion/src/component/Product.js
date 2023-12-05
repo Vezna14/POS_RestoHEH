@@ -21,10 +21,10 @@ function Product(props) {
                 
                 {props.products.map((product, index) => {
                     return(     
-                        <Col className='cartproduct'  key={product.id}  /* onClick={() => clickHandler(product)} */>
+                        <div className='cartproduct'  key={product.id}  /* onClick={() => clickHandler(product)} */>
                             <ProductForOrder data={product}/>   
                            
-                        </Col>                                   
+                        </div>                                   
                     )
                 })} 
                 

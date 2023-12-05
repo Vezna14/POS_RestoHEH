@@ -13,7 +13,7 @@ function OrderPurchase (props){
     }
   
     return(
-        <div>
+        <div className="orderpurchase">
             <div className="purchase">
                 <h2>bon de commande </h2>
                     <table>
@@ -23,6 +23,7 @@ function OrderPurchase (props){
                                 <th>Description</th>
                                 <th>Qty</th>
                                 <th>Price</th>
+                                <th>action</th>
                                 
                             </tr>
                         </thead>   

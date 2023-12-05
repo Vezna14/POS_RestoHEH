@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from 'react-modal';
-
+import axios from "axios";
 
 import jsonData from '../assert/datajson/platsmeteo.json';
 import trash from '../assert/svg/trash.svg';
@@ -9,6 +9,7 @@ import add from '../assert/svg/add.svg';
 
 
 import '../style/ChangeCart.css'; // Assurez-vous d'ajuster le chemin selon votre structure de fichiers
+import AddProductform from "./formulaires/AddProductform";
 
 const ChangeCart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +17,59 @@ const ChangeCart = () => {
   const [isDel, setIsDel] = useState(false);
 
   const recettesFiltrees = jsonData.filter((recette) => recette);
+
+
+  /* add form gestion */
+  const [formData, setFormData] = useState({
+    id: '',
+    name: '',
+    price: '',
+    category: '',
+    stock: '',
+    photo: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Convertir la chaîne de catégories en tableau
+      const categoryArray = formData.category.split(',');
+
+      // Envoi des données à localhost:8080 (ajuste l'URL selon tes besoins)
+      await axios.post('http://localhost:8080/product', {
+        name: formData.name,
+        price: formData.price,
+        category: categoryArray,
+        stock: formData.stock,
+        photo: formData.photo
+
+      });
+      console.log('envoie ..... !');
+
+      // Réinitialiser le formulaire après l'envoi
+      setFormData({
+        name: '',
+        price: '',
+        category: '',
+        stock: '',
+        photo: '',
+      });
+
+      // Fermer le formulaire après l'envoi (ajuste en fonction de ta logique)
+      setIsModalOpen(false);
+
+      console.log('Données envoyées avec succès!');
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi des données:', error.message);
+    }
+  };
+  /***************************************** */
 
   const handleAdd = () => {
     setIsModalOpen(true);
@@ -71,19 +125,8 @@ const ChangeCart = () => {
         className="modal"
         overlayClassName="overlay"
       >
-        <h2>Add Item Form</h2>
-        <form>
-          <label htmlFor="dishName">Dish Name:</label>
-          <input type="text" id="dishName" name="dishName" />
-
-          <label htmlFor="quantity">Quantity:</label>
-          <input type="number" id="quantity" name="quantity" />
-
-          {/* Add more form fields as needed */}
-
-          <button type="submit">Submit</button>
-        </form>
-        <button onClick={() => setIsModalOpen(false)}>Close</button>
+        <AddProductform formData={formData} action={handleSubmit} actionclose={setIsEditModalOpen} action1={handleChange}/>
+       
       </Modal>
 
       <Modal
