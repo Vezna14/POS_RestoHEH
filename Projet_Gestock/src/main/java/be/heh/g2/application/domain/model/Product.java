@@ -15,14 +15,7 @@ public class Product {
     private String photo;
 
 
-    public Product(long id,String name) {
-        this.id=id;
-        this.name = name;
-        this.price=0;
-        this.category=new ArrayList<String>();
-        this.stock=0;
-        this.photo="";
-    }
+
     public Product(long id, String name, double price, ArrayList<String> category, int stock, String photo) {
         this.id=id;
         this.name = name;
@@ -33,16 +26,8 @@ public class Product {
 
     }
 
-    public Product(long id, String name, double price,String category, int stock, String photo) {
-        this.id=id;
-        this.name = name;
-        this.price = price;
-        this.category=new ArrayList<String>();
-        this.category.add(category);
-        this.stock=stock;
-        this.photo=photo;
 
-    }
+
 
     // Getters et setters
 

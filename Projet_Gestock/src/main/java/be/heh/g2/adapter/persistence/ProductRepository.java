@@ -16,11 +16,10 @@ public class ProductRepository {
     }
 
     public void storeProductinDB(Product product) {
-        String sql = "INSERT INTO Product VALUES (NULL,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Product (name, category, price, stock, photo) VALUES (?,?,?,?,?)";
         jdbc.update(sql,
-                product.getId(),
                 product.getName(),
-                product.getCategory(),
+                String.join(",", product.getCategory()), // Joining categories as a comma-separated string
                 product.getPrice(),
                 product.getStock(),
                 product.getPhoto());
