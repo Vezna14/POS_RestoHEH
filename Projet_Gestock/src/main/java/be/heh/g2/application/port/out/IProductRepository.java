@@ -9,8 +9,8 @@ public interface IProductRepository {
 
     public List<Product> fetchAllProducts();
     //public Product fetchProductById()
-    public void CreateProductInRepository(String name, double price, ArrayList<String> category, int stock, String photo);
-    public void CreateProductInRepository(String name, double price, String category, int stock, String photo);
+
+    public void CreateProductInRepository(Product product);
 
     public void setQuantityInRepository(long id, int newQuantity);
 

@@ -2,6 +2,8 @@ package be.heh.g2.adapter.web;
 
 import be.heh.g2.application.domain.model.Product;
 import be.heh.g2.application.port.in.ProductManagementUseCase;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,19 +24,18 @@ public class ProductController {
         return productManagementUseCase.getAllProduct() ;
     }
 
-    @GetMapping("/product/{id}")
 
     @PostMapping(value = "/product")
-    public void POST(@RequestBody Product productToAdd){
-        productManagementUseCase.createProduct(productToAdd);
-
+    public ResponseEntity<String> createProduct(@RequestBody Product productToAdd) {
+        // Assuming productManagementUseCase.createProduct returns a success indicator
+        try {
+            productManagementUseCase.createProduct(productToAdd);
+            return ResponseEntity.status(HttpStatus.OK).body("Product created successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create product");
+        }
     }
 
-    /*
-    public void createProduct(String name, double price, String category, int stock, String photo);
 
-    public void modifyProductQuantity(long id, int new_quantity);
 
-    public void deleteProduct(Product productToDelete);
-    */
 }

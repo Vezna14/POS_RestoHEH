@@ -7,9 +7,9 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ProductRowMapper implements RowMapper<Product> {
-
 
     //long id, String name, double price, ArrayList<String> category, int stock, String photo
 
@@ -20,7 +20,7 @@ public class ProductRowMapper implements RowMapper<Product> {
                 rs.getLong("id"),
                 rs.getString("name"),
                 rs.getDouble("price"),
-                rs.getString("category"),  //cast en arrayList
+                new ArrayList<String>(Arrays.asList(rs.getString("category").split(","))),  //cast en arrayList
                 rs.getInt("stock"),
                 rs.getString("photo")
         );

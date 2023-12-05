@@ -44,7 +44,7 @@ public class ProductManagerImplTest {
         assertEquals("product1", result.get(0).getName());
         assertEquals("product2", result.get(1).getName());
 
-        }
+    }
 
 
     @Test
@@ -63,7 +63,7 @@ public class ProductManagerImplTest {
         // Vérifier que la méthode d'ajout a été appelée avec le produit à ajouter
         verify(product_repository).CreateProductInRepository(product_name,product_price,product_category,product_in_stock_quantity,product_img);
 
-        }
+    }
 
 
     @Test
