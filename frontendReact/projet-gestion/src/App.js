@@ -18,15 +18,25 @@ function App() {
   //table
   const [tableStatus, setTableStatus] = useState({});
   const [selectedTable, setSelectedTable] = useState(null);
-  const markTableOccupied = () => {
-    // Mettez à jour l'état de la table pour marquer la table comme occupée
-    setTableStatus(prevState => ({ ...prevState, [selectedTable.id]: true }));
-    setSelectedTable(false)
-  };
+
+
+const markTableOccupied = async (tableId) => {
+    try {
+        // Envoyer une requête PUT pour marquer la table comme occupée
+        await axios.put(`http://localhost:8080/toggleStatus/${tableId}`);
+        
+        // Mettre à jour l'état de la table pour marquer la table comme occupée
+        setSelectedTable(false);
+        console.log('Table marquée comme occupée avec succès!');
+    } catch (error) {
+        console.error('Erreur lors de la mise à jour du statut de la table:', error.message);
+    }
+};
+
   
   const releaseTable = () => {
     // Mettez à jour l'état de la table pour libérer la table
-    setTableStatus(prevState => ({ ...prevState, [selectedTable.id]: false }));
+    
     setSelectedTable(false)
   };
 
@@ -50,7 +60,6 @@ function App() {
 
             setProducts(response.data);
 
-            console.log(response.data)
 
             setIsLoading(false)
 
@@ -110,7 +119,7 @@ if (isError) {
           <Route path="/MenuTestjson" element={
             <>
               <Header/>
-              <TableComponent releaseTable={releaseTable} setSelectedTable={setSelectedTable} markTableOccupied={markTableOccupied}  />
+              <TableComponent releaseTable={releaseTable} setSelectedTable={setSelectedTable} selectedTable={selectedTable} markTableOccupied={markTableOccupied}  />
 
               {selectedTable && (
               <div id="newOrderpro">

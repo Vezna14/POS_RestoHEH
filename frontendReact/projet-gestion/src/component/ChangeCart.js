@@ -10,11 +10,14 @@ import add from '../assert/svg/add.svg';
 
 import '../style/ChangeCart.css'; // Assurez-vous d'ajuster le chemin selon votre structure de fichiers
 import AddProductform from "./formulaires/AddProductform";
+import EditProductform from "./formulaires/EditProductform";
 
-const ChangeCart = () => {
+const ChangeCart = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDel, setIsDel] = useState(false);
+  const [currentEdit, setCurrentEdit] = useState();
+
 
   const recettesFiltrees = jsonData.filter((recette) => recette);
 
@@ -50,7 +53,7 @@ const ChangeCart = () => {
         photo: formData.photo
 
       });
-      console.log('envoie ..... !');
+      
 
       // Réinitialiser le formulaire après l'envoi
       setFormData({
@@ -77,7 +80,10 @@ const ChangeCart = () => {
     setIsDel(false);
   };
 
-  const handleEdit = () => {
+  const handleEdit = (name) => {
+
+    //requete axios
+    setCurrentEdit(name);
     setIsModalOpen(false);
     setIsEditModalOpen(true);
     setIsDel(false);
@@ -101,7 +107,7 @@ const ChangeCart = () => {
           </tr>
         </thead>
         <tbody>
-          {recettesFiltrees.map((item) => (
+          {props.products.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
               <td>{item.name}</td>
@@ -110,7 +116,7 @@ const ChangeCart = () => {
               <td>
                 <div>
                   <img src={trash} alt="Delete Item" onClick={() => setIsDel(true)} className="changeicone" />
-                  <img src={pencil} alt="Edit Item" onClick={handleEdit} className="changeicone" />
+                  <img src={pencil} alt="Edit Item" onClick={() => handleEdit(item.name)} className="changeicone" />
                 </div>
               </td>
             </tr>
@@ -136,22 +142,9 @@ const ChangeCart = () => {
         className="modal"
         overlayClassName="overlay"
       >
-        <h2>Edit Item Form</h2>
-        <form>
-          <label htmlFor="selectedDish">Select Dish:</label>
-          <select id="selectedDish" name="selectedDish">
-            <option value="dish1">plat 1</option>
-            <option value="dish2">plat 2</option>
-            {/* Add more options as needed */}
-          </select>
-
-          <label htmlFor="newQuantity">New Quantity:</label>
-          <input type="number" id="newQuantity" name="newQuantity" />
-
-          {/* Add more form fields as needed */}
-
-          <button type="submit">Submit</button>
-        </form>
+        <h3>Mise à jour des aliments</h3>
+        <h4>modification de {currentEdit}</h4>
+        <AddProductform formData={formData} action={handleSubmit} actionclose={setIsEditModalOpen} action1={handleChange}/>
         <button onClick={() => setIsEditModalOpen(false)}>Close</button>
       </Modal>
 

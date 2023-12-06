@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import ProductItemForm from './ProductItemForm';
 
 function ProductForOrder({data,cart}) { 
-  console.log(data)   
+    
     return (
         <section className='card'>
            

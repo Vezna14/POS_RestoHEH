@@ -9,11 +9,12 @@ function OrderPurchase (props){
 
 
     const handlePrint = () => {
-        props.markTableOccupied();
+        props.markTableOccupied(props.selectedTable?.id);
         window.print();
     }
     const handleSave = ()=>{
-        props.markTableOccupied();
+        props.markTableOccupied(props.selectedTable?.id);
+        console.log(props.selectedTable?.id)
     }
   
     return(

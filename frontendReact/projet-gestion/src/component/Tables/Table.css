@@ -1,4 +1,6 @@
 .table-container {
+  display:flex;
+  justify-content: center;
     overflow-x: auto;
     color: rgb(31, 30, 27);
     padding: 20px; /* Ajoutez une marge pour plus d'esthétique */
@@ -16,8 +18,27 @@
     margin: 5px;
     border-radius: 10%;
     text-align: center;
+    background-image:url('../../assert/svg/3.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: large;
+    color: #1ae008;
   }
-  
+  .fontblack{
+    background-color: #000;
+    color: #fff;
+  }
+  .available ,.Available{
+    background-color:rgb(80, 233, 80);
+    color: #fff;
+    border-radius: 10px;
+  }
+  .occupied{
+    background-color:rgba(235, 14, 14);
+    color: #fff;
+    border-radius: 10px;
+  }
   .add-table {
     border: 1px solid #ddd;
     padding: 20px; /* Ajustez la taille du bouton rond selon vos préférences */
