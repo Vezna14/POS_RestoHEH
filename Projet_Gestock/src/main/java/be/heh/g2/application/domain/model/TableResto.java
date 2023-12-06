@@ -8,20 +8,24 @@ public class TableResto {
     private String name;
     private String status;
     private int seats;
-    private boolean reserved;
-    private ArrayList<Order> currentOrder;
-    private String occupationTime;
+    private boolean reserved ;
 
 
-    public TableResto(int id, String name, String status, int seats, boolean reserved, ArrayList<Order> currentOrder, String occupationTime) {
+
+
+    public TableResto(int id, String name, String status, int seats, boolean reserved ) {
         this.id = id;
         this.name = name;
         this.status = status;
         this.seats = seats;
         this.reserved = reserved;
-        this.currentOrder = currentOrder;
-        this.occupationTime = occupationTime;
-    }
+        System.out.println("Hello, constructeurr!");
+
+        }
+
+
+
+
 
     public int getId() {
         return id;
@@ -43,13 +47,11 @@ public class TableResto {
         return reserved;
     }
 
-    public ArrayList<Order> getCurrentOrder() {
+    /*public Order getCurrentOrder() {
         return currentOrder;
-    }
+    }*/
 
-    public String getOccupationTime() {
-        return occupationTime;
-    }
+
 
     public void setId(int id) {
         this.id = id;
@@ -71,11 +73,9 @@ public class TableResto {
         this.reserved = reserved;
     }
 
-    public void setCurrentOrder(ArrayList<Order> currentOrder) {
+    /*public void setCurrentOrder(Order currentOrder) {
         this.currentOrder = currentOrder;
-    }
+    }*/
 
-    public void setOccupationTime(String occupationTime) {
-        this.occupationTime = occupationTime;
-    }
+
 }

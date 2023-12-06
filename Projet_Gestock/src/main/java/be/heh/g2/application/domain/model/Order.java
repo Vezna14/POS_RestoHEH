@@ -4,80 +4,73 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 public class Order {
-    private long id;
-    private double price;
-    private double priceDiscount;
-    private String clientName;
-    boolean isPaid;
-    private Date date;
+    private int id;
+    private int idTable;
     private ArrayList<Product> productList;
+    private boolean isPaid;
+    private double totalPrice;
+    private String date;
 
-    public Order(long id, double price, double priceDiscount, String clientName, boolean isPaid, Date date,
-                 ArrayList<Product> productList) {
-        this.clientName = clientName;
-        this.date = date;
-        this.priceDiscount = priceDiscount;
-        this.id = id;
-        this.price = price;
-        this.isPaid = isPaid;
+    public Order(int id,int idTable, ArrayList<Product> productList, boolean isPaid, double totalPrice, String date) {
+        this.id =id;
+        this.idTable = idTable;
         this.productList = productList;
+        this.isPaid = isPaid;
+        this.totalPrice = totalPrice;
+        this.date = date;
     }
 
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    public String getClientName() {
-        return clientName;
+    @Override
+    public String toString() {
+        return "Order [id=" + id + ", price=" + totalPrice + " table="
+                + idTable + ", isPaid=" + isPaid + ", date=" + date + ", productList=" + productList + "]";
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public int getId() {
+        return id;
     }
 
-    public boolean getIsPaid() {
-        return isPaid;
+    public int getIdTable() {
+        return idTable;
     }
 
     public ArrayList<Product> getProductList() {
         return productList;
     }
 
-    public void setProductList(ArrayList<Product> productIdList) {
-        this.productList = productIdList;
+    public boolean isPaid() {
+        return isPaid;
     }
 
-    public long getId() {
-        return id;
+    public double getTotalPrice() {
+        return totalPrice;
     }
-    public Date getDate() {
+
+    public String getDate() {
         return date;
     }
 
-    public double getPriceDiscount() {
-        return priceDiscount;
-    }
-    public void setPriceDiscount(double priceDiscount) {
-        this.priceDiscount = priceDiscount;
-    }
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setIsPaid(boolean isPaid) {
-        this.isPaid = isPaid;
+    public void setIdTable(int idTable) {
+        this.idTable = idTable;
     }
 
-    public void setDate(Date date) {
+    public void setProductList(ArrayList<Product> productList) {
+        this.productList = productList;
+    }
+
+    public void setPaid(boolean paid) {
+        isPaid = paid;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public void setDate(String date) {
         this.date = date;
     }
-
-    @Override
-    public String toString() {
-        return "Order [id=" + id + ", price=" + price + ", priceDiscount=" + priceDiscount + ", clientName="
-                + clientName + ", isPaid=" + isPaid + ", date=" + date + ", productList=" + productList + "]";
-    }
-
 }

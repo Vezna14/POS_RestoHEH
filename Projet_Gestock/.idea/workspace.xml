@@ -83,9 +83,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "spring.configuration.checksum": "c0934d8dd706eedff25887f236533c3f",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "c4fc39a2114fb63929ec925d4a32e944",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -208,6 +208,7 @@
       <workItem from="1701089432750" duration="3614000" />
       <workItem from="1701253159938" duration="2505000" />
       <workItem from="1701329737434" duration="27879000" />
+      <workItem from="1701803179195" duration="523000" />
     </task>
     <servers />
   </component>
