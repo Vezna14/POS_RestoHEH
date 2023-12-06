@@ -1,0 +1,11 @@
+[
+    { "id": 1, "name": "Table 1", "occupied": false, "seats": 4 },
+    { "id": 2, "name": "Table 2", "occupied": true, "seats": 6 },
+    { "id": 3, "name": "Table 3", "occupied": false, "seats": 2 },
+    { "id": 4, "name": "Table 4", "occupied": false, "seats": 8 },
+    { "id": 5, "name": "Table 5", "occupied": false, "seats": 4 },
+    { "id": 6, "name": "Table 6", "occupied": false, "seats": 6 },
+    { "id": 7, "name": "Table 7", "occupied": true, "seats": 2 },
+    { "id": 8, "name": "Table 8", "occupied": false, "seats": 4 }
+  ]
+  

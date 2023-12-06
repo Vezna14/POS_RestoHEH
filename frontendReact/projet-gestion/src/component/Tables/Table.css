@@ -1,0 +1,41 @@
+.table-container {
+    overflow-x: auto;
+    color: rgb(31, 30, 27);
+    padding: 20px; /* Ajoutez une marge pour plus d'esthétique */
+  }
+  
+  .table-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content; /* Pour éviter le saut de ligne */
+  }
+  
+  .table {
+    border: 1px solid #ddd;
+    padding: 20px; /* Ajustez la taille des tables selon vos préférences */
+    margin: 5px;
+    border-radius: 10%;
+    text-align: center;
+  }
+  
+  .add-table {
+    border: 1px solid #ddd;
+    padding: 20px; /* Ajustez la taille du bouton rond selon vos préférences */
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 20%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #000;
+  }
+  
+  .table.selected {
+    background-color: #f0f0f0; /* Couleur de fond pour la table sélectionnée */
+    border: 2px solid #007bff; /* Bordure pour la table sélectionnée */
+    color: #007bff; /* Couleur du texte pour la table sélectionnée */
+  }
+  
+  

@@ -9,13 +9,18 @@ function OrderPurchase (props){
 
 
     const handlePrint = () => {
+        props.markTableOccupied();
         window.print();
+    }
+    const handleSave = ()=>{
+        props.markTableOccupied();
     }
   
     return(
         <div className="orderpurchase">
             <div className="purchase">
                 <h2>bon de commande </h2>
+                <h5> N°de table:{props.selectedTable?.name} ..... à{new Date().toLocaleTimeString()}</h5> 
                     <table>
                         <thead>
                             <tr>
@@ -51,7 +56,8 @@ function OrderPurchase (props){
 
             
             <div className="actions">
-                <button onClick={() => handlePrint()}>pay</button>            
+                <button onClick={() => handlePrint()}>pay</button>
+                <button onClick={() =>  handleSave()}>save </button>            
                 <button >avoid</button>
             </div>
 

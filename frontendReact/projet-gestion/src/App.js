@@ -12,7 +12,26 @@ import { useState,useEffect } from 'react';
 import CartProvider from './context/Mycontext';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import ChangeCart from './component/ChangeCart';
+import TableComponent from './component/Tables/TableComponent';
 function App() {
+
+  //table
+  const [tableStatus, setTableStatus] = useState({});
+  const [selectedTable, setSelectedTable] = useState(null);
+  const markTableOccupied = () => {
+    // Mettez à jour l'état de la table pour marquer la table comme occupée
+    setTableStatus(prevState => ({ ...prevState, [selectedTable.id]: true }));
+    setSelectedTable(false)
+  };
+  
+  const releaseTable = () => {
+    // Mettez à jour l'état de la table pour libérer la table
+    setTableStatus(prevState => ({ ...prevState, [selectedTable.id]: false }));
+    setSelectedTable(false)
+  };
+
+
+  //****************** */
   const [ticketItems, setTicketItems] = useState([]);
   const [listeproducts, setProducts] = useState([]);
 
@@ -84,33 +103,44 @@ if (isError) {
           <Route path="/" element={
             <>
               <Header/>
+              
               <Weather/>
             </>
           }/>
           <Route path="/MenuTestjson" element={
             <>
               <Header/>
+              <TableComponent releaseTable={releaseTable} setSelectedTable={setSelectedTable} markTableOccupied={markTableOccupied}  />
+
+              {selectedTable && (
               <div id="newOrderpro">
                 <CartProvider>
+               
                   
-                  <OrderPurchase />
+                  <OrderPurchase markTableOccupied={markTableOccupied} selectedTable={selectedTable} />
                   
                   <Product products={listeproducts}/>
+
+               
 
                 </CartProvider>
                 
               </div>
+                 )}
             </>
           }/>
         <Route path='/UpdateStock' element={
            <>
            <Header/>
-           <div id="newOrder">
-             <CartProvider>
-               <ChangeCart products={listeproducts}/>
-             </CartProvider>
-             
-           </div>
+           
+          
+            <div id="newOrder">
+              <CartProvider>
+                <ChangeCart products={listeproducts}/>
+              </CartProvider>
+              
+            </div>
+          
          </>
 
         } />  
