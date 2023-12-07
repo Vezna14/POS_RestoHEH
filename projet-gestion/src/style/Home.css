@@ -1,0 +1,234 @@
+#allproduct{
+  display: flex;
+  flex-wrap: wrap;
+}
+img{
+    width:200px;
+    height:100px;
+}
+
+
+#platsmeteo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Colonnes flexibles */
+  grid-auto-rows: 300px; /* Hauteur des lignes automatiques */
+  grid-gap: 16px; /* Espacement entre les éléments */
+  }
+  
+  #platsmeteo div {
+    background-color: #f1f1f1; 
+    border: 1px solid #ddd; 
+    padding: 20px; 
+    text-align: center; 
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    color:white;
+    text-align: center;
+    font-size:2em;
+ 
+  }
+  #newOrder{
+    display:flex;
+  }
+  #newOrderpro{
+     display: flex;
+  }
+  button{
+    margin-right: 10px;
+  } 
+.purchase{
+    border: 2px solid ;
+    
+}
+table{
+    padding: 5px;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+}
+table th{
+    margin: 5px;
+    border: 1px solid;
+    border-left: 0;
+    border-right: 0;
+    border-style: dashed;
+}
+tr {
+    text-align: center;
+}
+
+.menu{
+  flex:1;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+ 
+  border-radius:15px;
+  
+}
+.cartproduct{
+ border:1px solid #405322;
+ margin:8px;
+ padding: 10px;
+}
+
+
+/* button:hover {
+  background-color:white;
+  color: black;
+  border: 2px solid rgb(23, 18, 18);
+} */
+.burger-icon{
+  display:none;
+}
+/* Burger Menu Styles */
+.burger-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.burger-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  display: none;
+}
+
+.burger-links.open {
+  display: flex;
+}
+
+.burger-links a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.burger-links button {
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.burger-links{
+ display:flex;
+ flex-direction: row;
+ justify-content: center;
+}
+/*carte de produits*/
+
+.card{
+  width:142px;
+  height: 200px;
+  font-size:13px;
+  
+}
+.centerimg{
+  width: 150px;
+  height: 90px;
+}
+.productquantityform{
+  width: 150px;
+  display:flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.productquantityform .number,.productquantityform Button{
+  width:50%;
+  height:25px;
+}
+/* Media Query for Small Screens */
+
+@media only screen and (max-width: 600px) {
+  .burger-icon img{
+    width: 40px;
+    position: relative;
+    color: black;
+    z-index: 1;
+   
+  }
+  #marginbot{
+    margin-bottom: 50px;
+  }
+  .burger-icon{
+    width: 50px;
+    display: block;
+    position: absolute;
+   top:40px;
+  right: 25px;
+  }
+
+
+  .burger-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    display: none;
+  
+  }
+  
+  .burger-links.open {
+    display: flex;
+    
+  }
+  
+  .burger-links.color1,
+  .burger-links button {
+    color: rgb(23, 74, 116);
+    text-decoration: none;
+    width: 2000px;
+    border-radius: 5px;
+
+  }
+  
+  .burger-links button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .burger-links {
+    background-color: rgb(240, 241, 240);
+    position: absolute;
+    align-items: center;
+    top: 82px;
+    right: -20px;
+    padding: 10px;
+  }
+  #newOrderpro{
+    display:flex;
+    flex-direction: column;
+    
+    align-items: center;
+  }
+  .orderpurchase{
+    margin-top:35px;
+    width:90%;
+  }
+
+}
+
+
+
+
+
+
+
+  
+ 
