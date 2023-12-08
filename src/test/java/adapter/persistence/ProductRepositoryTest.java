@@ -57,3 +57,6 @@ public class ProductRepositoryTest {
         assertEquals("test.jpg", products.get(15).getPhoto(), "The new product photo should match");
     }
 }
+
+
+
