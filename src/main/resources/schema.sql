@@ -45,3 +45,13 @@ VALUES
     ('Table 1', 'Available', 4, false, NULL, NULL),
     ('Table 2', 'Occupied', 6, true, '12:30 PM', '{"id": 1, "idTable": 2, "productList": [], "isPaid": false, "totalPrice": 0.0, "date": "2023-01-01"}'),
     ('Table 3', 'Available', 2, false, NULL, NULL);
+
+
+CREATE TABLE IF NOT EXISTS orders (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    idTable INT NOT NULL,
+    productList JSON NOT NULL,
+    isPaid BOOLEAN NOT NULL,
+    totalPrice DECIMAL(10, 2) NOT NULL,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

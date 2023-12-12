@@ -1,8 +1,10 @@
 package be.heh.g2;
 
 import be.heh.g2.adapter.persistence.*;
+import be.heh.g2.application.domain.service.OrderManageImpl;
 import be.heh.g2.application.domain.service.ProductManagementImpl;
 import be.heh.g2.application.domain.service.TableManagImpl;
+import be.heh.g2.application.port.in.OrderManaUseCase;
 import be.heh.g2.application.port.in.ProductManagementUseCase;
 import be.heh.g2.application.port.in.TableRestoManagUseCase;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -23,12 +25,15 @@ public class ProjectConfiguration {
     private ProductRepository repository;
     @Autowired
     private TableRepository tableRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
 
     //private ProductManagementImpl productManagementImpl;
 
     private PersistenceAdapter persistenceAdapter;
     private TablePersistanceAdaptater tablePersistanceAdaptater;
+    private OrderAdaptater orderAdaptater;
 
     @Bean
 
@@ -41,6 +46,11 @@ public class ProjectConfiguration {
         tablePersistanceAdaptater=new TablePersistanceAdaptater(tableRepository);
         return new TableManagImpl(tablePersistanceAdaptater);
 
+    }
+    @Bean
+    OrderManaUseCase getOrderManaUseCase(){
+        orderAdaptater =new OrderAdaptater(orderRepository);
+        return  new OrderManageImpl(orderAdaptater);
     }
     @Bean
     public CorsFilter corsFilter() {

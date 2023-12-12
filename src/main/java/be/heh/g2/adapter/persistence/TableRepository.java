@@ -35,7 +35,7 @@ public class TableRepository {
             if (!isTableExists(table.getName())) {
                 String sql = "INSERT INTO TableResto (name, status, seats, reserved) VALUES (?, ?, ?, ?)";
                 jdbc.update(sql, table.getName(), table.getStatus(), table.getSeats(), table.isReserved());
-                System.out.println("Table added successfully!");
+
                 return "Table added successfully!";
             } else {
                 System.out.println("Table already exists!");

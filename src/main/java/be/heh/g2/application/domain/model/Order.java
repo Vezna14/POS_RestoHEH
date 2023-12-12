@@ -1,18 +1,17 @@
 package be.heh.g2.application.domain.model;
 
-import java.util.Date;
 import java.util.List;
-import java.util.ArrayList;
+
 public class Order {
     private int id;
     private int idTable;
-    private ArrayList<Product> productList;
+    private List<ProductOrder> productList;
     private boolean isPaid;
     private double totalPrice;
     private String date;
 
-    public Order(int id,int idTable, ArrayList<Product> productList, boolean isPaid, double totalPrice, String date) {
-        this.id =id;
+    public Order(int id, int idTable, List<ProductOrder> productList, boolean isPaid, double totalPrice, String date) {
+        this.id = id;
         this.idTable = idTable;
         this.productList = productList;
         this.isPaid = isPaid;
@@ -34,7 +33,7 @@ public class Order {
         return idTable;
     }
 
-    public ArrayList<Product> getProductList() {
+    public List<ProductOrder> getProductList() {
         return productList;
     }
 
@@ -58,7 +57,7 @@ public class Order {
         this.idTable = idTable;
     }
 
-    public void setProductList(ArrayList<Product> productList) {
+    public void setProductList(List<ProductOrder> productList) {
         this.productList = productList;
     }
 

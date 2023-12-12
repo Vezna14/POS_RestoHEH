@@ -19,7 +19,7 @@ public class TableResto {
         this.status = status;
         this.seats = seats;
         this.reserved = reserved;
-        System.out.println("Hello, constructeurr!");
+
 
         }
 

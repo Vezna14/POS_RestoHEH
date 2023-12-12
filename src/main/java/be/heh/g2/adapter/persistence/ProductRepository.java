@@ -30,6 +30,15 @@ public class ProductRepository {
         //return null;
         return jdbc.query(sql, new ProductRowMapper());
     }
+    public int getProductStock(int productId) {
+        String sql = "SELECT stock FROM Product WHERE id = ?";
+        return jdbc.queryForObject(sql, Integer.class, productId);
+    }
+
+    public void updateProductStock(int productId, int newStock) {
+        String sql = "UPDATE Product SET stock = ? WHERE id = ?";
+        jdbc.update(sql, newStock, productId);
+    }
 
 }
 

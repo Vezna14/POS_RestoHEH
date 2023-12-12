@@ -1,6 +1,5 @@
 package be.heh.g2.adapter.persistence;
 
-import be.heh.g2.application.domain.model.Order;
 import be.heh.g2.application.domain.model.TableResto;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -11,7 +10,7 @@ public class TableRestoRowMapper implements RowMapper<TableResto> {
 
     @Override
     public TableResto mapRow(ResultSet rs, int rowNum) throws SQLException {
-        System.out.println("Hello, row mapper!");
+
 
         int id = rs.getInt("id");
         String name = rs.getString("name");

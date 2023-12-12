@@ -35,7 +35,7 @@ public class TableRestoController {
     public ResponseEntity<String> createTable(@RequestBody TableResto newTable) {
         try {
             String result = TableRestoManageUseCase.createTable(newTable);
-            System.out.println("Hello, world!" + newTable);
+
 
             // Le résultat pourrait être un message ou un code, en fonction de la logique de votre cas d'utilisation.
             if ("Table already exists!".equals(result)) {
