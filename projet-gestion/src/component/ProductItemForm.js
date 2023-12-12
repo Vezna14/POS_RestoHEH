@@ -47,7 +47,7 @@ function ProductItemForm({product}) {
     return (
       <form className='productquantityform'>
         <input className="number"  type="number" min={1}  onChange={handleInputChange} ref={inputRef} ></input>
-        <Button variant="primary" disabled={isInputEmpty} onClick={handleAdd}>ADD</Button>
+        <Button id='btnadd' variant="primary" disabled={isInputEmpty} onClick={handleAdd}>ADD</Button>
       </form>
     );
   }

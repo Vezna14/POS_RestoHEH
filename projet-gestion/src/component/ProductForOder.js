@@ -11,7 +11,7 @@ function ProductForOrder({data,cart}) {
             <Card.Img variant="top" className='centerimg' src={data.photo}/>
             
             <Card.Body>
-              <Card.Title>{data.name}</Card.Title>
+              <Card.Title className='plat-name'>{data.name}</Card.Title>
               
               <Card.Text>{data.price}€<span></span></Card.Text>
               <ProductItemForm product={data} />

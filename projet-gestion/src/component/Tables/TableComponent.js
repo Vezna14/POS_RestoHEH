@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import AddTableForm from '../formulaires/AddTableForm';
 import trash from '../../assert/svg/trash.svg';
 import pencil from '../../assert/svg/pencil.svg';
+import OrderPay from './OrderPay';
 
 
 const TableComponent = (props) => {
@@ -14,10 +15,36 @@ const TableComponent = (props) => {
   const [selectedTable, setSelectedTableLocal] = useState(null);
   const [isLoading, setIsLoading] = useState(true) //variable qui précise si ça charge ou pas
   const [showModal, setShowModal] = useState(false);
-  const [isError, setIsError] = useState(false) // pour les erreurs
-  const [isOccuped, setIsOccuped] = useState(false) 
+  const [isError, setIsError] = useState(false); // pour les erreurs
+  const [isOccuped, setIsOccuped] = useState(false) ;
+  const [showPay ,setShowPay] = useState(false);
+  const [dataOrder ,setDataOrder] = useState(null);
 
   const navigate = useNavigate();
+
+
+  const handlePrint =(id) =>{
+    try {
+      axios.get(`http://localhost:8080/resto/orders/show/${id}`)
+        .then(response => {
+          setShowPay(true)
+          setDataOrder(response.data);
+         
+          console.log(response.data);
+
+        
+  
+        })
+        .catch(error => {
+        
+          console.error("Error fetching order details:", error);
+        });
+    } catch (error) {
+     
+      console.error("Error sending request:", error);
+    }
+  };
+
 
   const handleTableClick = (table) => {
    
@@ -96,6 +123,7 @@ const chkTableOccupped=()=>{
     
 
   return (
+    <div>
     <div className="table-container">
       <div className="table-scroll">
         {tables.map((table, index) => (
@@ -113,7 +141,9 @@ const chkTableOccupped=()=>{
             </div>
             <div>
                 <img src={trash} alt="Delete Item" onClick={() => handleDeleteTable(table.id)}   className="changeicone" />
-                <button disabled={!(table.status =="occupied" ||table.status =="Occupied")} onClick={() =>handleReleaseTable(table.id)}>Libérer</button>
+                <button className={table.status} disabled={!(table.status =="occupied" ||table.status =="Occupied")} onClick={() =>handleReleaseTable(table.id)}>Libérer</button>
+                {table.status =='occupied' &&<button className="pay" onClick={() => handlePrint(table.id)}>pay</button>}
+
                 
 
             </div>
@@ -125,7 +155,11 @@ const chkTableOccupped=()=>{
         </div>
       </div>
       {showModal && <AddTableForm handleCloseModal={handleCloseModal} showModal={showModal} setShowModal={setShowModal}/>}
+      
     </div>
+    {showPay && <OrderPay data={dataOrder} avoid={setShowPay}/>}
+    </div>
+    
   );
 };
 

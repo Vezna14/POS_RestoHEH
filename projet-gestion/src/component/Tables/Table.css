@@ -33,6 +33,7 @@
     background-color:rgb(80, 233, 80);
     color: #fff;
     border-radius: 10px;
+    
   }
   .occupied{
     background-color:rgba(235, 14, 14);
@@ -40,9 +41,10 @@
     border-radius: 10px;
   }
   .add-table {
-    border: 1px solid #ddd;
+    border: 2px solid #222;
     padding: 20px; /* Ajustez la taille du bouton rond selon vos préférences */
     margin: 5px;
+    height: 55%;
     cursor: pointer;
     border-radius: 20%;
     background-color: #fff;
@@ -51,12 +53,23 @@
     justify-content: center;
     font-size: 24px;
     color: #000;
+    font-weight: bolder;
   }
   
   .table.selected {
     background-color: #f0f0f0; /* Couleur de fond pour la table sélectionnée */
     border: 2px solid #007bff; /* Bordure pour la table sélectionnée */
     color: #007bff; /* Couleur du texte pour la table sélectionnée */
+  }
+  button.occupied{
+    border-radius:20px;
+    background-color:green;
+    color: #fff;
+  }
+  button.available ,button.Available{
+    border-radius:20px;
+    background-color:gray;
+    color: #fff;
   }
   
   

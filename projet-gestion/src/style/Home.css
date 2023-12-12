@@ -1,6 +1,9 @@
 #allproduct{
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  width:70%;
+  
 }
 img{
     width:200px;
@@ -37,14 +40,28 @@ img{
   }
   #newOrderpro{
      display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     
+     width:100%;
   }
   button{
     margin-right: 10px;
   } 
 .purchase{
     border: 2px solid ;
-    
+    width:100%;
+    margin-top:6px; 
 }
+.plat-name{
+  font-weight: bolder;
+}
+#btnadd{
+  background-color: #6f1414;
+  border-radius:15px;
+  color: #fff;
+}
+
 table{
     padding: 5px;
     font-size: 14px;
@@ -73,7 +90,7 @@ tr {
   
 }
 .cartproduct{
- border:1px solid #405322;
+ border:2px solid #000;
  margin:8px;
  padding: 10px;
 }
@@ -139,9 +156,20 @@ tr {
   
 }
 .centerimg{
-  width: 150px;
+  width: 140px;
   height: 90px;
+  
 }
+ .actions .pay{
+  border-radius:20px;
+  background-color:green;
+  color: #fff;
+ }
+ .actions .avoid{
+  border-radius:20px;
+  background-color: red;
+  color: #fff;
+ }
 .productquantityform{
   width: 150px;
   display:flex;

@@ -1,21 +1,46 @@
 //import
-import { useContext } from "react";
+import { useContext,useState,useEffect} from "react";
 import DeleteFromPurchase from "./DeleteFromPurchase";
 import { purchaseContext } from "../context/Mycontext";
+import axios from "axios";
 
 function OrderPurchase (props){
     // var total = products.reduce((amount, item) => (amount+parseInt(item.price)),0);
     const purchasectx = useContext(purchaseContext);
-
-
+    const [tableContents, setTableContents] = useState(purchasectx.items);
+    console.log(tableContents)
+    
     const handlePrint = () => {
         props.markTableOccupied(props.selectedTable?.id);
         window.print();
     }
-    const handleSave = ()=>{
-        props.markTableOccupied(props.selectedTable?.id);
-        console.log(props.selectedTable?.id)
+    const handleSave =async () => {
+       
+
+        const data = {
+            idTable: props.selectedTable?.id,
+            productList: tableContents,
+            isPaid: false,
+            totalPrice: purchasectx.totalPrice,
+            date:new Date().toLocaleTimeString()
+          };
+          console.log('datas:',data)
+
+          try {
+            // Make a POST request to save the order
+            await axios.post('http://localhost:8080/resto/orders', data);
+            
+            props.markTableOccupied(props.selectedTable?.id);
+            console.log('datas:',data)
+        }catch (error) {
+            console.error("Error saving order:", error);
+        }
+        
     }
+    useEffect(() => {
+        // Update tableContents when purchasectx.items changes
+        setTableContents(purchasectx.items);
+    }, [purchasectx.items]);
   
     return(
         <div className="orderpurchase">
@@ -57,9 +82,9 @@ function OrderPurchase (props){
 
             
             <div className="actions">
-                <button onClick={() => handlePrint()}>pay</button>
-                <button onClick={() =>  handleSave()}>save </button>            
-                <button >avoid</button>
+                <button className="pay" onClick={() => handlePrint()}>pay</button>
+                <button className="pay" onClick={() =>  handleSave()}>save </button>            
+                <button className="avoid">avoid</button>
             </div>
 
         </div>
