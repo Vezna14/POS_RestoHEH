@@ -112,7 +112,7 @@ const ChangeCart = (props) => {
               <td>{item.id}</td>
               <td>{item.name}</td>
               <td>{item.price}</td>
-              <td>5</td>
+              <td>{item.stock}</td>
               <td>
                 <div>
                   <img src={trash} alt="Delete Item" onClick={() => setIsDel(true)} className="changeicone" />

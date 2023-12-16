@@ -9,14 +9,11 @@ function OrderPurchase (props){
     const purchasectx = useContext(purchaseContext);
     const [tableContents, setTableContents] = useState(purchasectx.items);
     console.log(tableContents)
-    
-    const handlePrint = () => {
-        props.markTableOccupied(props.selectedTable?.id);
-        window.print();
-    }
-    const handleSave =async () => {
-       
 
+    
+  //pay orders  
+    const handlePrint = async() => {
+        
         const data = {
             idTable: props.selectedTable?.id,
             productList: tableContents,
@@ -24,17 +21,74 @@ function OrderPurchase (props){
             totalPrice: purchasectx.totalPrice,
             date:new Date().toLocaleTimeString()
           };
-          console.log('datas:',data)
-
-          try {
-            // Make a POST request to save the order
-            await axios.post('http://localhost:8080/resto/orders', data);
+        
+        try {
+            if(tableContents.length > 0){
+                const response = await axios.post('http://localhost:8080/resto/orders/pay',data);
+                console.log(response.data);
             
-            props.markTableOccupied(props.selectedTable?.id);
-            console.log('datas:',data)
-        }catch (error) {
-            console.error("Error saving order:", error);
+                window.print();
+                if (response.status === 200) {
+                    // Succès
+                    alert('Commande payée avec succès');
+                  } else if (response.status === 400) {
+                    // Stock insuffisant
+                    alert('Erreur : ' + response.data);
+                  } else {
+                    // Gérez d'autres codes de statut au besoin
+                  }
+
+            }
+            else{
+                alert("veillez encoder une commande")
+            }
+           
+        } catch (error) {
+            
+            console.error('Error:', error);
         }
+        
+        
+    }
+
+    
+    //avoid order
+    const handleAvoid =() =>{
+        setTableContents(null)
+        props.setSelectedTable(false)
+
+    }
+    //save Order
+    const handleSave =async () => {
+       console.log('taille order',tableContents.length)
+        if(tableContents.length > 0){
+            console.log('taille order z',tableContents.length)
+            const data = {
+                idTable: props.selectedTable?.id,
+                productList: tableContents,
+                isPaid: false,
+                totalPrice: purchasectx.totalPrice,
+                date:new Date().toLocaleTimeString()
+              };
+              console.log('datas:',data)
+    
+              try {
+                // Make a POST request to save the order
+                await axios.post('http://localhost:8080/resto/orders', data);
+                
+                props.markTableOccupied(props.selectedTable?.id);
+                console.log('datas:',data)
+            }catch (error) {
+                console.error("Error saving order:", error);
+            }
+        }
+        else{
+          alert("cette commande est vide !!!!!")
+
+        }
+            
+       
+        
         
     }
     useEffect(() => {
@@ -59,7 +113,7 @@ function OrderPurchase (props){
                             </tr>
                         </thead>   
                         <tbody>            
-                        {purchasectx.items.map((item) => (                            
+                        {tableContents.map((item) => (                            
                             <tr key={item.id}>
                                 <td>{item.id}</td>
                                 <td>{item.name}</td>
@@ -84,7 +138,7 @@ function OrderPurchase (props){
             <div className="actions">
                 <button className="pay" onClick={() => handlePrint()}>pay</button>
                 <button className="pay" onClick={() =>  handleSave()}>save </button>            
-                <button className="avoid">avoid</button>
+                <button className="avoid"onClick={() =>  handleAvoid()}>avoid</button>
             </div>
 
         </div>

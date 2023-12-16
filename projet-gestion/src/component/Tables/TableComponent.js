@@ -62,15 +62,21 @@ const TableComponent = (props) => {
 
   //delete table
   const handleDeleteTable = (id) => {
-    axios.delete(`http://localhost:8080/deleteTable/${id}`)
-        .then(response => {
-            // Mettez à jour l'état des tables après la suppression réussie
-            setTables(tables.filter(table => table.id !== id));
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    if(props.selectedTable?.status =="available"){
+      axios.delete(`http://localhost:8080/deleteTable/${id}`)
+      .then(response => {
+          // Mettez à jour l'état des tables après la suppression réussie
+          setTables(tables.filter(table => table.id !== id));
+          console.log(response.data);
+      })
+      .catch(error => {
+          console.error(error);
+      });
+
+    }else{
+      alert("cette table n'as pas encore payée")
+    }
+   
 };
 const chkTableOccupped=()=>{
   if(props.selectedTable?.status =="occupied" ||props.selectedTable?.status =="Occupied" ){

@@ -17,7 +17,7 @@ function App() {
 
   //table
   const [tableStatus, setTableStatus] = useState({});
-  const [selectedTable, setSelectedTable] = useState(null);
+  const [selectedTable, setSelectedTable] = useState(false);
 
 
 const markTableOccupied = async (tableId) => {
@@ -126,7 +126,7 @@ if (isError) {
                 <CartProvider>
                
                   
-                  <OrderPurchase markTableOccupied={markTableOccupied} selectedTable={selectedTable} />
+                  <OrderPurchase markTableOccupied={markTableOccupied} setSelectedTable={setSelectedTable} selectedTable={selectedTable} />
                   
                   <Product products={listeproducts}/>
 
