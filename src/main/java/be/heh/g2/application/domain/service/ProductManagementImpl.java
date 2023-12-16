@@ -28,12 +28,16 @@ public class ProductManagementImpl implements ProductManagementUseCase {
     }
 
     @Override
-    public void modifyProductQuantity(long id, int new_quantity) {
+    public void modifyProductQuantity(int id, int new_quantity) {
         product_repository.setQuantityInRepository(id,new_quantity);
     }
     @Override
     public void deleteProduct(Product product_to_delete){
         product_repository.removeProductFromRepository(product_to_delete);
+    }
+    @Override
+    public int getProductStock(int productId){
+        return product_repository.getProductStock(productId);
     }
 
 

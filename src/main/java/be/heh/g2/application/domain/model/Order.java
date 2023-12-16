@@ -19,6 +19,7 @@ public class Order {
         this.date = date;
     }
 
+
     @Override
     public String toString() {
         return "Order [id=" + id + ", price=" + totalPrice + " table="

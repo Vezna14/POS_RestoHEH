@@ -50,7 +50,8 @@ public class ProjectConfiguration {
     @Bean
     OrderManaUseCase getOrderManaUseCase(){
         orderAdaptater =new OrderAdaptater(orderRepository);
-        return  new OrderManageImpl(orderAdaptater);
+        persistenceAdapter=new PersistenceAdapter(repository);
+        return  new OrderManageImpl(orderAdaptater,persistenceAdapter);
     }
     @Bean
     public CorsFilter corsFilter() {

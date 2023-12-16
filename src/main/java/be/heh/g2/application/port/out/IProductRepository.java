@@ -12,8 +12,9 @@ public interface IProductRepository {
 
     public void CreateProductInRepository(Product product);
 
-    public void setQuantityInRepository(long id, int newQuantity);
+    public void setQuantityInRepository(int id, int newQuantity);
 
     public void removeProductFromRepository(Product productToRemove);
+    public int getProductStock(int productId);
 
 }

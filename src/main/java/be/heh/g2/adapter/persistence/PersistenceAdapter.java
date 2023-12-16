@@ -2,6 +2,7 @@ package be.heh.g2.adapter.persistence;
 
 import be.heh.g2.application.domain.model.Product;
 import be.heh.g2.application.port.out.IProductRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 
 import java.util.ArrayList;
@@ -37,12 +38,23 @@ public class PersistenceAdapter implements IProductRepository {
     }
 
     @Override
-    public void setQuantityInRepository(long id, int newQuantity) {
+    public void setQuantityInRepository(int id, int newQuantity) {
 
     }
 
     @Override
     public void removeProductFromRepository(Product productToRemove) {
+
+    }
+    @Override
+    public int getProductStock(int productId){
+        try {
+            //appel de la methode du repository pour save le product
+            return  productRepository.getProductStock(productId);
+        } catch (EmptyResultDataAccessException e) {
+            // Gérer le cas où aucun produit avec l'ID spécifié n'est trouvé
+            throw new RuntimeException("Product with ID " + productId + " not found");
+        }
 
     }
 }

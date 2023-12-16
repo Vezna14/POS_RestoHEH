@@ -12,7 +12,8 @@ public interface ProductManagementUseCase {
 
     public void createProduct(Product productToAdd);
 
-    public void modifyProductQuantity(long id, int new_quantity);
+    public void modifyProductQuantity(int id, int new_quantity);
+    public int getProductStock(int productId);
 
     public void deleteProduct(Product productToDelete);
 

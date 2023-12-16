@@ -28,9 +28,16 @@ public class OrderController {
         }
     }
 
-    @PostMapping("/pay/{idTable}")
-    public String payOrder(@PathVariable int idTable) {
-        return orderUseCase.makePayOrder(idTable);
+    @PostMapping("/pay")
+    public ResponseEntity<String> payOrder(@RequestBody Order order) {
+        System.out.println(" debut paiement");
+        try{ orderUseCase.makePayOrder(order.getIdTable(),order);
+            return new ResponseEntity<>("Order created successfully", HttpStatus.CREATED);
+        }
+        catch (Exception e){
+            System.out.println(" erreur debut paiement");
+            return new ResponseEntity<>("Error pay order: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/show/{idTable}")
