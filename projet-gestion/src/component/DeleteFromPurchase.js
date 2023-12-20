@@ -11,7 +11,7 @@ function DeleteFromPurchase({ item }) {
     };
   
     return (
-      <button className="cart-item-delete" onClick={handleRemoveItem}>
+      <button className="cart-item-delete orderdisplayPrint" onClick={handleRemoveItem}>
         <i class="fa fa-times" aria-hidden="true"></i>
       </button>
     );

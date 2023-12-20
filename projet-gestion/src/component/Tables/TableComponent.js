@@ -130,7 +130,7 @@ const chkTableOccupped=()=>{
 
   return (
     <div>
-    <div className="table-container">
+    <div className="table-container orderdisplayPrint">
       <div className="table-scroll">
         {tables.map((table, index) => (
           <div key={index}>
@@ -163,7 +163,8 @@ const chkTableOccupped=()=>{
       {showModal && <AddTableForm handleCloseModal={handleCloseModal} showModal={showModal} setShowModal={setShowModal}/>}
       
     </div>
-    {showPay && <OrderPay data={dataOrder} avoid={setShowPay}/>}
+    {showPay && <OrderPay data={dataOrder} avoid={setShowPay} setIsOccuped={setIsOccuped} />}
+
     </div>
     
   );

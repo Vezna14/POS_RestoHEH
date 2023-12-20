@@ -6,7 +6,7 @@ import ProductItemForm from './ProductItemForm';
 function ProductForOrder({data,cart}) { 
     
     return (
-        <section className='card'>
+        <section className="card orderdisplayPrint">
            
             <Card.Img variant="top" className='centerimg' src={data.photo}/>
             
@@ -14,7 +14,7 @@ function ProductForOrder({data,cart}) {
               <Card.Title className='plat-name'>{data.name}</Card.Title>
               
               <Card.Text>{data.price}€<span></span></Card.Text>
-              <ProductItemForm product={data} />
+              <ProductItemForm className="orderdisplayPrint" product={data} />
               <div className="d-flex flex-row my-3">
             <div className="text-warning mb-1 me-2">
             </div>

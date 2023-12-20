@@ -128,7 +128,7 @@ if (isError) {
                   
                   <OrderPurchase markTableOccupied={markTableOccupied} setSelectedTable={setSelectedTable} selectedTable={selectedTable} />
                   
-                  <Product products={listeproducts}/>
+                  <Product className="orderdisplayPrint" products={listeproducts}/>
 
                
 

@@ -13,13 +13,13 @@ function Header() {
 
 
     return(
-        <header>
+        <header className='orderdisplayPrint'>
             <nav id="idhead">
                 <a href='#'><h1>LaBouffe</h1></a>
                 <form>
                     <input type='search'></input>
                 </form>
-                <a><i className="fa fa-user"><span>username</span></i></a>
+                <a className='userDisposition'><i className="fa fa-user"><span>username</span></i></a>
             
             </nav>
             <div className="burger-icon" onClick={handleBurgerClick} >

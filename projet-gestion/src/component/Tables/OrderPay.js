@@ -9,26 +9,51 @@ function OrderPay (props){
     const avoid= () =>{
         props.avoid(false);
     }
+
+    const markTableStatus = (tableId) => {
+        try {
+            // Envoyer une requête PUT pour marquer la table comme occupée
+             axios.put(`http://localhost:8080/toggleStatus/${tableId}`)
+            .then(response =>{
+                console.log(response)
+
+            });
+            
+            console.log('Table marquée comme occupée avec succès!');
+        } catch (error) {
+            console.error('Erreur lors de la mise à jour du statut de la table:', error.message);
+        }
+    };
     
     
-        const handlePrint =(id) =>{
-            try {
-              axios.post(`http://localhost:8080/resto/orders/pay/${id}`)
+    const handlePrint = (id) => {
+        try {
+          axios.put(`http://localhost:8080/resto/orders/pay/${id}`)
+            .then(response => {
+              if (response.status === 201) {
+                console.log('Order payment successful. Marking table as occupied...');
+                markTableStatus(id);
+                console.log('Table marked as occupied successfully!');
+                props.setIsOccuped(false);
+                avoid();
+              }
               window.print();
-              
-        
-            } catch (error) {
-             
-              console.error("Error sending request:", error);
-            }
-          };
+            })
+            .catch(error => {
+              console.error("Error in request:", error);
+            });
+        } catch (error) {
+          console.error("Unexpected error:", error);
+        }
+      };
+    
         
        
     
    
   
     return(
-        <div className="orderpurchase">
+        <div className="orderpurchase orderdisplayPrint">
             <div className="purchase">
                 <h2>bon de commande </h2>
                 <h5> N°de table:{props.data.idTable} ..... à{props.data.date}</h5> 

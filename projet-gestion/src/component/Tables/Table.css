@@ -71,5 +71,14 @@
     background-color:gray;
     color: #fff;
   }
+  @media print {
+    .orderdisplayPrint{
+     display: none;
+   }
+   .orderpurchase {
+     margin:0 auto ;
+   }
+ 
+ }
   
   

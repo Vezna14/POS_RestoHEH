@@ -12,7 +12,7 @@ function CartItem({ item }) {
 
   return (
     <div>
-        <button className="cart-item-delete">
+        <button className="cart-item-delete orderdisplayPrint">
             <img src={trash} alt="Delete Item" className="changeicone" />
         </button>
         <button className="cart-item-delete">

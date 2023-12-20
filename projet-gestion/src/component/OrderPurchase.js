@@ -135,7 +135,7 @@ function OrderPurchase (props){
                 </div>
 
             
-            <div className="actions">
+            <div className="actions orderdisplayPrint">
                 <button className="pay" onClick={() => handlePrint()}>pay</button>
                 <button className="pay" onClick={() =>  handleSave()}>save </button>            
                 <button className="avoid"onClick={() =>  handleAvoid()}>avoid</button>

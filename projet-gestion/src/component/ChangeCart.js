@@ -90,7 +90,7 @@ const ChangeCart = (props) => {
   };
 
   return (
-    <div className="change-cart-container">
+    <div className="change-cart-container orderdisplayPrint">
       <div className="addbut" onClick={handleAdd}>
         <img src={add} alt="add Item" className="changeicone" />
         <span>Ajoutez un Plat</span>

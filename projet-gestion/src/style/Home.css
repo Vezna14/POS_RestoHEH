@@ -190,6 +190,10 @@ tr {
     z-index: 1;
    
   }
+  .userDisposition{
+    margin-right:80px;
+    padding-bottom:12px;
+  }
   #marginbot{
     margin-bottom: 50px;
   }
@@ -197,7 +201,7 @@ tr {
     width: 50px;
     display: block;
     position: absolute;
-   top:40px;
+   top:-18px;
   right: 25px;
   }
 
@@ -251,6 +255,19 @@ tr {
   }
 
 }
+
+@media print {
+   .orderdisplayPrint{
+    display: none;
+  }
+  
+  .cartproduct{
+    display: none;
+  }
+
+
+}
+ 
 
 
 
