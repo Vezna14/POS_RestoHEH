@@ -51,9 +51,13 @@ public class TableRestoController {
 
     @PutMapping("/toggleStatus/{id}")
     public ResponseEntity<String> toggleStatutTable(@PathVariable int id) {
+        System.out.println(" toggle start");
         try {
             // Récupérer la table par son ID
+            System.out.println(" toggle try");
             String result = TableRestoManageUseCase.toggleStatutTable(id);
+            System.out.println(" toggle go db");
+            System.out.println("etquoi "+result);
 
             if (result == "") {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Table not found");
@@ -61,6 +65,7 @@ public class TableRestoController {
 
             return ResponseEntity.status(HttpStatus.OK).body("Table status toggled successfully");
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to toggle table status");
         }
     }

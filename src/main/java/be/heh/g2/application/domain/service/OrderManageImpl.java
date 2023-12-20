@@ -57,5 +57,15 @@ public class OrderManageImpl implements OrderManaUseCase {
     public Order makeShowOrder(int idTable) {
         return orderRepository.showOrderRepo(idTable);
     }
+    public ResponseEntity<String>makePayOrderById(int idTable){
+        try {
+            orderRepository.payOrderRepo(idTable);
+
+            return new ResponseEntity<>("Order paid successfully", HttpStatus.OK);
+        }catch (Exception e) {
+            e.printStackTrace(); // Vous devriez loguer l'exception correctement dans une application réelle
+            return new ResponseEntity<>("Erreur dans le paiement", HttpStatus.BAD_REQUEST);
+        }
+    }
 }
 

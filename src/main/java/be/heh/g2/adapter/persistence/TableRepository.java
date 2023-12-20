@@ -64,17 +64,27 @@ public class TableRepository {
     }
 
     public void toggleStatutTable(int idTable) {
-        String selectSql = "SELECT status FROM TableResto WHERE id=?";
-        String updateSql = "UPDATE TableResto SET status=? WHERE id=?";
+        String selectSql = "SELECT status FROM TableResto WHERE id = ?";
+        String updateSql = "UPDATE TableResto SET status = ? WHERE id = ?";
 
         // Récupérer le statut actuel de la table
-        String currentStatus = jdbc.queryForObject(selectSql, String.class, idTable);
-        System.out.println("Table"+currentStatus);
+        List<String> currentStatusList = jdbc.queryForList(selectSql, String.class, idTable);
+
+        if (currentStatusList.isEmpty()) {
+            System.out.println("Table not found for id: " + idTable);
+            // Gérer le cas où la table n'est pas trouvée
+            return;
+        }
+
+        String currentStatus = currentStatusList.get(0);
+        System.out.println("Table " + currentStatus);
+
         // Mettre à jour le statut de la table
         String newStatus = "available".equals(currentStatus) ? "occupied" : "available";
         jdbc.update(updateSql, newStatus, idTable);
-        System.out.println("Table"+newStatus);
+        System.out.println("Table " + newStatus);
     }
+
 
 
 
