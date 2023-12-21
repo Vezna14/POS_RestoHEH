@@ -8,6 +8,8 @@ import trash from '../../assert/svg/trash.svg';
 import pencil from '../../assert/svg/pencil.svg';
 import OrderPay from './OrderPay';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 const TableComponent = (props) => {
 
@@ -25,7 +27,7 @@ const TableComponent = (props) => {
 
   const handlePrint =(id) =>{
     try {
-      axios.get(`http://localhost:8080/resto/orders/show/${id}`)
+      axios.get(`${apiUrl}/resto/orders/show/${id}`)
         .then(response => {
           setShowPay(true)
           setDataOrder(response.data);
@@ -63,7 +65,7 @@ const TableComponent = (props) => {
   //delete table
   const handleDeleteTable = (id) => {
     if(props.selectedTable?.status =="available"){
-      axios.delete(`http://localhost:8080/deleteTable/${id}`)
+      axios.delete(`${apiUrl}/deleteTable/${id}`)
       .then(response => {
           // Mettez à jour l'état des tables après la suppression réussie
           setTables(tables.filter(table => table.id !== id));
@@ -91,7 +93,7 @@ const chkTableOccupped=()=>{
     useEffect(() => {
         
       try{
-          axios.get('http://localhost:8080/tableRestos')
+          axios.get(`${apiUrl}/tableRestos`)
   
           .then(response => {
   

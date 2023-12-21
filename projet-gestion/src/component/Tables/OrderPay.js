@@ -2,6 +2,8 @@
 
 import axios from "axios";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 function OrderPay (props){
     console.log(props.data)
@@ -13,7 +15,7 @@ function OrderPay (props){
     
         const handlePrint =(id) =>{
             try {
-              axios.post(`http://localhost:8080/resto/orders/pay/${id}`)
+              axios.post(`${apiUrl}/resto/orders/pay/${id}`)
               window.print();
               
         

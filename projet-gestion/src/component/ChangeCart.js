@@ -6,11 +6,10 @@ import jsonData from '../assert/datajson/platsmeteo.json';
 import trash from '../assert/svg/trash.svg';
 import pencil from '../assert/svg/pencil.svg';
 import add from '../assert/svg/add.svg';
-
-
 import '../style/ChangeCart.css'; // Assurez-vous d'ajuster le chemin selon votre structure de fichiers
 import AddProductform from "./formulaires/AddProductform";
 import EditProductform from "./formulaires/EditProductform";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const ChangeCart = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,8 +17,6 @@ const ChangeCart = (props) => {
   const [isDel, setIsDel] = useState(false);
   const [currentEdit, setCurrentEdit] = useState();
 
-
-  const recettesFiltrees = jsonData.filter((recette) => recette);
 
 
   /* add form gestion */
@@ -45,7 +42,7 @@ const ChangeCart = (props) => {
       const categoryArray = formData.category.split(',');
 
       // Envoi des données à localhost:8080 (ajuste l'URL selon tes besoins)
-      await axios.post('http://localhost:8080/product', {
+      await axios.post(`${apiUrl}/product`, {
         name: formData.name,
         price: formData.price,
         category: categoryArray,
@@ -80,10 +77,11 @@ const ChangeCart = (props) => {
     setIsDel(false);
   };
 
-  const handleEdit = (name) => {
+  const handleEdit = (item) => {
 
     //requete axios
-    setCurrentEdit(name);
+
+    setCurrentEdit(item);
     setIsModalOpen(false);
     setIsEditModalOpen(true);
     setIsDel(false);
@@ -96,9 +94,9 @@ const ChangeCart = (props) => {
         <span>Ajoutez un Plat</span>
       </div>
 
-      <table className="responsive-table">
-        <thead>
-          <tr>
+      <table id="tabplat" className="responsive-table">
+        <thead >
+          <tr >
             <th>Reference</th>
             <th>Name</th>
             <th>Price</th>
@@ -116,7 +114,7 @@ const ChangeCart = (props) => {
               <td>
                 <div>
                   <img src={trash} alt="Delete Item" onClick={() => setIsDel(true)} className="changeicone" />
-                  <img src={pencil} alt="Edit Item" onClick={() => handleEdit(item.name)} className="changeicone" />
+                  <img src={pencil} alt="Edit Item" onClick={() => handleEdit(item)} className="changeicone" />
                 </div>
               </td>
             </tr>
@@ -142,10 +140,9 @@ const ChangeCart = (props) => {
         className="modal"
         overlayClassName="overlay"
       >
-        <h3>Mise à jour des aliments</h3>
-        <h4>modification de {currentEdit}</h4>
-        <AddProductform formData={formData} action={handleSubmit} actionclose={setIsEditModalOpen} action1={handleChange}/>
-        <button onClick={() => setIsEditModalOpen(false)}>Close</button>
+        <h3 className="edit">Mise à jour des aliments</h3>
+        <EditProductform currentEdit={currentEdit} actionclose={setIsEditModalOpen} />
+       
       </Modal>
 
     </div>

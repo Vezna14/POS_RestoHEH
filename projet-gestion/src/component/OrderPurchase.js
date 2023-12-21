@@ -3,6 +3,8 @@ import { useContext,useState,useEffect} from "react";
 import DeleteFromPurchase from "./DeleteFromPurchase";
 import { purchaseContext } from "../context/Mycontext";
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 function OrderPurchase (props){
     // var total = products.reduce((amount, item) => (amount+parseInt(item.price)),0);
@@ -24,7 +26,7 @@ function OrderPurchase (props){
         
         try {
             if(tableContents.length > 0){
-                const response = await axios.post('http://localhost:8080/resto/orders/pay',data);
+                const response = await axios.post(`${apiUrl}/resto/orders/pay`,data);
                 console.log(response.data);
             
                 window.print();
@@ -74,7 +76,7 @@ function OrderPurchase (props){
     
               try {
                 // Make a POST request to save the order
-                await axios.post('http://localhost:8080/resto/orders', data);
+                await axios.post(`${apiUrl}/resto/orders`, data);
                 
                 props.markTableOccupied(props.selectedTable?.id);
                 console.log('datas:',data)
