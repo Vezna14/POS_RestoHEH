@@ -50,16 +50,19 @@ img{
   } 
 .purchase{
     border: 2px solid ;
-    width:100%;
-    margin-top:6px; 
+    width:99%;
+    margin-top:0px; 
+    border-radius:5px;
 }
 .plat-name{
   font-weight: bolder;
 }
 #btnadd{
   background-color: #6f1414;
-  border-radius:15px;
+  border-radius:5px;
+  margin-left:5px;
   color: #fff;
+  height:25px;
 }
 
 table{
@@ -90,9 +93,17 @@ tr {
   
 }
 .cartproduct{
- border:2px solid #000;
+ 
  margin:8px;
  padding: 10px;
+ box-shadow: rgb(0,0,0,0.50) 0px 0.5px 5px;
+ border-radius:5px;
+}
+.orderpurchase{
+ margin:10px 0 0 30px;
+  box-shadow: rgb(0,0,0,0.90) 0px 0.5px 5px;
+  width:500px;
+  border-radius:5px;
 }
 
 
@@ -154,21 +165,23 @@ tr {
   height: 200px;
   font-size:13px;
   
+  
 }
 .centerimg{
   width: 140px;
   height: 90px;
   
 }
- .actions .pay{
-  border-radius:20px;
-  background-color:green;
+.actions button{
   color: #fff;
+  border-radius:5px;
+  margin-bottom:10px;
+}
+ .actions .pay{
+  background-color:green;
  }
  .actions .avoid{
-  border-radius:20px;
   background-color: red;
-  color: #fff;
  }
 .productquantityform{
   width: 150px;
@@ -176,9 +189,13 @@ tr {
   justify-content: space-around;
   align-items: baseline;
 }
-.productquantityform .number,.productquantityform Button{
+.productquantityform Button{
   width:50%;
   height:25px;
+}
+.productquantityform .number{
+  width:50%;
+  height:18px;
 }
 /* Media Query for Small Screens */
 
@@ -252,6 +269,7 @@ tr {
   .orderpurchase{
     margin-top:35px;
     width:90%;
+   
   }
 
 }

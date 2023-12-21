@@ -79,7 +79,7 @@ const TableComponent = (props) => {
    
 };
 const chkTableOccupped=()=>{
-  if(props.selectedTable?.status =="occupied" ||props.selectedTable?.status =="Occupied" ){
+  if(props.selectedTable?.status ==="occupied" ||props.selectedTable?.status ==="Occupied" ){
     console.log("statussssssss",props.selectedTable?.status )
     setIsOccuped(true);
   } else{
@@ -146,11 +146,11 @@ const chkTableOccupped=()=>{
               <p className={table.status}>{table.status}</p>
             </div>
             <div>
-                <img src={trash} alt="Delete Item" onClick={() => handleDeleteTable(table.id)}   className="changeicone" />
-                <button className={table.status} disabled={!(table.status =="occupied" ||table.status =="Occupied")} onClick={() =>handleReleaseTable(table.id)}>Libérer</button>
-                {table.status =='occupied' &&<button className="pay" onClick={() => handlePrint(table.id)}>pay</button>}
+                <img  src={trash} alt="Delete Item" onClick={() => handleDeleteTable(table.id)}   className="changeicone" />
+                <button id="liberer"className={table.status} disabled={!(table.status =="occupied" ||table.status =="Occupied")} onClick={() =>handleReleaseTable(table.id)}>Vider</button>
+                {table.status =='occupied' &&<button className="pay" id="pay" onClick={() => handlePrint(table.id)}>pay</button>}
 
-                
+ 
 
             </div>
             

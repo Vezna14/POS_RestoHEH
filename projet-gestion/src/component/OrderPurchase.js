@@ -99,8 +99,8 @@ function OrderPurchase (props){
     return(
         <div className="orderpurchase">
             <div className="purchase">
-                <h2>bon de commande </h2>
-                <h5> N°de table:{props.selectedTable?.name} ..... à{new Date().toLocaleTimeString()}</h5> 
+                <h2>Bon de commande </h2>
+                <h5> N°de table: {props.selectedTable?.name} ..... à {new Date().toLocaleTimeString()}</h5> 
                     <table>
                         <thead>
                             <tr>
