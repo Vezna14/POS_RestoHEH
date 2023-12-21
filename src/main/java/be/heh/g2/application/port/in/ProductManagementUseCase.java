@@ -8,11 +8,12 @@ import java.util.List;
 public interface ProductManagementUseCase {
 
     public List<Product> getAllProduct();
+    public Product getProductById(long id);
 
 
     public void createProduct(Product productToAdd);
 
-    public void modifyProductQuantity(long id, int new_quantity);
+    public void modifyProduct(InputProductValidator productToModify);
 
     public void deleteProduct(Product productToDelete);
 
