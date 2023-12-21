@@ -5,15 +5,82 @@ Projet Application Java Spring boot React pour le cours appl &amp; systèmes ent
 Nous allons réaliser une application qui permet de créer des commandes pour la vente de 
 produit et gérer le stock de l’entreprise.
 # Détails du projet
-Utilisateurs : 
-- Enregistrer un nouveau client.
-- Encoder une commande pour un client
-- Facturer une/des commandes client
-- Gérer le stock (voir les quantités disponibles / modifier le stock / gérer les prix des produits)
-- Proposition de produits "du moment" selon la météo 
-- Créer alerte si stock d’un produit atteint une certaine limite.
-- Mettre en place une limite de stock pour un produit spécifique et commander 
-automatiquement si le stock descend en dessous de cette limite.
-Fonctionnalité supplémentaire :
-Si une commande contient des articles dont le stock est nul ou insuffisant, ils seront 
-automatiquement retirés de la commande lors de la facturation
+
+## API Reference
+
+
+
+-----------------------------------------------------------------------------
+Order Controller
+-----------------------------------------------------------------------------
+
+Create Order
+POST /resto/orders
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `order`   | `object` | Order details              |
+
+Pay Order
+POST /resto/orders/pay
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `order`   | `object` | Order details              |
+
+Pay Order by ID
+PUT /resto/orders/pay/${id}
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `number` | ID of the order to pay      |
+
+Show Order
+GET /resto/orders/show/${idTable}
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `idTable` | `number` | ID of the table to show the order |
+
+-----------------------------------------------------------------------------
+Product Controller
+-----------------------------------------------------------------------------
+
+Get All Products
+GET /products
+
+Create Product
+POST /product
+
+| Parameter       | Type     | Description                |
+| :-------------- | :------- | :------------------------- |
+| `productToAdd`  | `object` | Product details           |
+
+-----------------------------------------------------------------------------
+Table Resto Controller
+-----------------------------------------------------------------------------
+
+Get All Tables
+GET /tableRestos
+
+Delete Table
+DELETE /deleteTable/${id}
+
+| Parameter | Type     | Description             |
+| :-------- | :------- | :---------------------- |
+| `id`      | `number` | ID of the table to delete|
+
+Create Table
+POST /tableRestos
+
+| Parameter  | Type     | Description                |
+| :--------- | :------- | :------------------------- |
+| `newTable` | `object` | Table details              |
+
+Toggle Status Table
+PUT /toggleStatus/${id}
+
+| Parameter | Type     | Description               |
+| :-------- | :------- | :------------------------ |
+| `id`      | `number` | ID of the table to toggle  |
+
