@@ -13,6 +13,7 @@
   }
   
   .table {
+    height:100px;
     border: 1px solid #ddd;
     padding: 20px; /* Ajustez la taille des tables selon vos préférences */
     margin: 5px;
@@ -27,11 +28,14 @@
     color: #1ae008;
   }
   .fontblack{
+    margin-top:15px;
     background-color: #000;
     color: #fff;
   }
   .available ,.Available{
-    padding:3px;
+    margin-top:25px;
+    width: 70px;
+    padding:1px;
     text-align: center;
     background-color:rgb(80, 233, 80);
     color: #fff;
@@ -39,7 +43,8 @@
     
   }
   .occupied{
-    padding:3px;
+    margin-top:25px;
+    padding:2px;
     text-align: center;
     background-color:rgba(235, 14, 14);
     color: #fff;
@@ -84,6 +89,7 @@
     background-color:gray;
     color: #fff;
   }
+  
   @media print {
     .orderdisplayPrint{
      display: none;

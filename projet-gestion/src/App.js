@@ -13,17 +13,20 @@ import CartProvider from './context/Mycontext';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import ChangeCart from './component/ChangeCart';
 import TableComponent from './component/Tables/TableComponent';
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function App() {
 
   //table
   const [tableStatus, setTableStatus] = useState({});
   const [selectedTable, setSelectedTable] = useState(false);
+  
 
 
 const markTableOccupied = async (tableId) => {
     try {
         // Envoyer une requête PUT pour marquer la table comme occupée
-        await axios.put(`http://localhost:8080/toggleStatus/${tableId}`);
+        await axios.put(`${apiUrl}/toggleStatus/${tableId}`);
         
         // Mettre à jour l'état de la table pour marquer la table comme occupée
         setSelectedTable(false);
@@ -54,7 +57,7 @@ const markTableOccupied = async (tableId) => {
   useEffect(() => {
         
     try{
-        axios.get('http://localhost:8080/products')
+        axios.get(`${apiUrl}/products`)
 
         .then(response => {
 

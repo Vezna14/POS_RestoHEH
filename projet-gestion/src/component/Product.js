@@ -1,18 +1,10 @@
 //product 
 
 import React from 'react'
-
-
-import Col from 'react-bootstrap/Col';
-
 import ProductForOrder from './ProductForOder';
 
 
- 
-
 function Product(props) {
-
-    console.log('halllooooo',props.products);
 
 
     return (

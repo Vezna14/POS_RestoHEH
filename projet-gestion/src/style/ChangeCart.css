@@ -88,7 +88,7 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 16px;
-    box-sizing: border-box;
+ 
   }
   
   .form-container button {
@@ -103,10 +103,21 @@
   }
   .addbut{
     width: 20%;
-    border-radius:30px;
+    border-radius:10px;
     border: 2px solid #000;
     margin-bottom: 20px;
     
+  }
+  #tabplat.responsive-table{
+    border-radius: 5px;
+    box-shadow: 0.2px 0.4px 6px rgba(0, 0, 0, 0.25);
+    border-top:1px solid #ddd;
+   
+  }
+  #tabplat.responsive-table table{
+    border-radius: 5px;
+   border-top: solid;
+   
   }
   
   @media only screen and (max-width: 600px) {
@@ -135,6 +146,21 @@
   
     .form-container {
       max-width: 100%;
+    }
+    .addbut{
+      width: 20%;
+      min-width:20px;
+      border-radius:10px;
+      border: 2px solid #000;
+      margin-bottom: 20px;
+      text-size-adjust:2px;
+      
+    }
+    .addbut span{
+      display: none;
+    }
+    .addbut .changeicone{
+      width:80%;
     }
   }
   @media print {

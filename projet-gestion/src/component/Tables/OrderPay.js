@@ -1,6 +1,9 @@
 //import
 
 import axios from "axios";
+import '../../style/Home.css';
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 
 function OrderPay (props){
@@ -13,7 +16,7 @@ function OrderPay (props){
     const markTableStatus = (tableId) => {
         try {
             // Envoyer une requête PUT pour marquer la table comme occupée
-             axios.put(`http://localhost:8080/toggleStatus/${tableId}`)
+             axios.put(`${apiUrl}/toggleStatus/${tableId}`)
             .then(response =>{
                 console.log(response)
 
@@ -25,10 +28,10 @@ function OrderPay (props){
         }
     };
     
-    
+
     const handlePrint = (id) => {
         try {
-          axios.put(`http://localhost:8080/resto/orders/pay/${id}`)
+          axios.put(`${apiUrl}/resto/orders/pay/${id}`)
             .then(response => {
               if (response.status === 201) {
                 console.log('Order payment successful. Marking table as occupied...');
@@ -53,9 +56,9 @@ function OrderPay (props){
    
   
     return(
-        <div className="orderpurchase orderdisplayPrint">
+        <div className="orderpurchase orderdisplayPrint " id="facture">
             <div className="purchase">
-                <h2>bon de commande </h2>
+                <h2>Facture </h2>
                 <h5> N°de table:{props.data.idTable} ..... à{props.data.date}</h5> 
                     <table>
                         <thead>

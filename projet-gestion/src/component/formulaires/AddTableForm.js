@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import '../../style/EditProductform.css';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 const AddTableForm = (props) => {
     const [newTable, setNewTable] = useState({
@@ -23,7 +25,7 @@ const AddTableForm = (props) => {
     const handleCreateTable = async (e)=> {
         e.preventDefault();
         try { 
-            await axios.post('http://localhost:8080/tableRestos', newTable);
+            await axios.post(`${apiUrl}/tableRestos`, newTable);
             console.log('envoie ..... !');
 
              // Réinitialiser les champs du formulaire
