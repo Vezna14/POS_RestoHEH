@@ -18,6 +18,8 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import org.springframework.web.cors.CorsConfiguration;
 
+import java.util.Arrays;
+
 
 @Configuration
 public class ProjectConfiguration {
@@ -56,7 +58,8 @@ public class ProjectConfiguration {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("http://localhost:3000");
+        //config.addAllowedOrigin("http://localhost:3000",);
+        config.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:3001","https://resto-frontend-seven.vercel.app/"));
         config.addAllowedHeader("*");
         config.addAllowedMethod("GET");
         config.addAllowedMethod("POST");

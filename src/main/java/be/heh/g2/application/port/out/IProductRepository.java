@@ -10,9 +10,14 @@ public interface IProductRepository {
     public List<Product> fetchAllProducts();
     //public Product fetchProductById()
 
+    public Product fetchProductById(long id);
     public void CreateProductInRepository(Product product);
 
+
     public void setQuantityInRepository(int id, int newQuantity);
+
+    public void modifyProductInRepository(Product productToModify);
+
 
     public void removeProductFromRepository(Product productToRemove);
     public int getProductStock(int productId);

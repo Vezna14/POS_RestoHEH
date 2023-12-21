@@ -21,6 +21,12 @@ public class PersistenceAdapter implements IProductRepository {
         return  productRepository.findAllProducts();
     }
 
+    @Override
+    public Product fetchProductById(long id){
+        List<Product> result = productRepository.findProductById(id);
+        return result.get(0);
+    }
+
 
     @Override
     public void CreateProductInRepository(Product newProduct) {
@@ -38,7 +44,12 @@ public class PersistenceAdapter implements IProductRepository {
     }
 
     @Override
+
     public void setQuantityInRepository(int id, int newQuantity) {
+    }
+
+    public void modifyProductInRepository(Product productToModify) {
+        productRepository.modifyProductInDB(productToModify);
 
     }
 
