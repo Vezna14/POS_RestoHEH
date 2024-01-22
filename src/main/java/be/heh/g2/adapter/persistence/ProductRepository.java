@@ -42,9 +42,9 @@ public class ProductRepository {
 
 
     public List<Product> findProductById(long id){
-        String sql = "SELECT * FROM Product WHERE id = "+ id;
+        String sql = "SELECT * FROM Product WHERE id = ?";
         //return null;
-        return jdbc.query(sql, new ProductRowMapper());
+        return jdbc.query(sql, new ProductRowMapper(), id);
     }
 
     public void modifyProductInDB(Product productToModify){
