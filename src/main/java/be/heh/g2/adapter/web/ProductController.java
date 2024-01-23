@@ -1,6 +1,8 @@
 package be.heh.g2.adapter.web;
 
+import be.heh.g2.application.common.ProductNotFoundException;
 import be.heh.g2.application.domain.model.Product;
+import be.heh.g2.application.port.in.InputProductValidator;
 import be.heh.g2.application.port.in.ProductManagementUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,23 +21,49 @@ public class ProductController {
 
     }
 
+    //@GetMapping("/products")
+    //public List<Product> products (){
+      //  return productManagementUseCase.getAllProduct() ;
+    //}
     @GetMapping("/products")
-    public List<Product> products (){
-        return productManagementUseCase.getAllProduct() ;
+    public ResponseEntity<List<Product>> getAllProducts() {
+        return new ResponseEntity<>(productManagementUseCase.getAllProduct(), HttpStatus.OK);
+    }
+
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        try{
+            Product product = productManagementUseCase.getProductById(id);
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        } catch (Exception e){
+            throw new ProductNotFoundException("Product not found with ID: " + id);
+        }
     }
 
 
+
     @PostMapping(value = "/product")
-    public ResponseEntity<String> createProduct(@RequestBody Product productToAdd) {
+    public ResponseEntity<String> createProduct(@RequestBody InputProductValidator productToAdd) {
         // Assuming productManagementUseCase.createProduct returns a success indicator
         try {
-            productManagementUseCase.createProduct(productToAdd);
+            Product product= new Product(productToAdd.id(), productToAdd.name(), productToAdd.price(),productToAdd.category(),productToAdd.stock(), productToAdd.photo());
+            productManagementUseCase.createProduct(product);
             return ResponseEntity.status(HttpStatus.OK).body("Product created successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create product");
         }
     }
 
+
+
+
+    @PutMapping("/product/{id}")
+    public ResponseEntity<String> PUT(@RequestBody InputProductValidator productToModify){
+
+            productManagementUseCase.modifyProduct(productToModify);
+            return ResponseEntity.status(HttpStatus.OK).body("Product created successfully");
+
+    }
 
 
 }

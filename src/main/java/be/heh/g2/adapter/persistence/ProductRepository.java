@@ -40,6 +40,24 @@ public class ProductRepository {
         jdbc.update(sql, newStock, productId);
     }
 
+
+    public List<Product> findProductById(long id){
+        String sql = "SELECT * FROM Product WHERE id = ?";
+        //return null;
+        return jdbc.query(sql, new ProductRowMapper(), id);
+    }
+
+    public void modifyProductInDB(Product productToModify){
+        String sql = "UPDATE Product SET id = ?, name = ?, category = ?, price = ?, stock = ?, photo = ? WHERE id="+ productToModify.getId();
+        jdbc.update(sql,
+                productToModify.getId(),
+                productToModify.getName(),
+                String.join(", ", productToModify.getCategory()),
+                productToModify.getPrice(),
+                productToModify.getStock(),
+                productToModify.getPhoto());
+    }
+
 }
 
 

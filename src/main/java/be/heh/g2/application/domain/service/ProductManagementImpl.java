@@ -1,6 +1,7 @@
 package be.heh.g2.application.domain.service;
 
 import be.heh.g2.application.domain.model.Product;
+import be.heh.g2.application.port.in.InputProductValidator;
 import be.heh.g2.application.port.in.ProductManagementUseCase;
 import be.heh.g2.application.port.out.IProductRepository;
 
@@ -20,7 +21,8 @@ public class ProductManagementImpl implements ProductManagementUseCase {
         return product_repository.fetchAllProducts();
     }
 
-
+    @Override
+    public Product getProductById(long id){return product_repository.fetchProductById(id);}
 
     @Override
     public void createProduct(Product productToAdd) {
@@ -29,7 +31,14 @@ public class ProductManagementImpl implements ProductManagementUseCase {
 
     @Override
     public void modifyProductQuantity(int id, int new_quantity) {
-        product_repository.setQuantityInRepository(id,new_quantity);
+        product_repository.setQuantityInRepository(id, new_quantity);
+    }
+
+    @Override
+    public void modifyProduct(InputProductValidator productToModify) {
+        Product ProductToUpdate= new Product(productToModify.id(), productToModify.name(), productToModify.price(), productToModify.category(), productToModify.stock(), productToModify.photo());
+        product_repository.modifyProductInRepository(ProductToUpdate);
+
     }
     @Override
     public void deleteProduct(Product product_to_delete){
