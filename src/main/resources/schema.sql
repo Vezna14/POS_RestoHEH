@@ -1,7 +1,7 @@
 -- schéma SQL = DDL = create table etc
 -- create_table.sql
 
-CREATE DATABASE IF NOT EXISTS DB_Gestock;
+CREATE DATABASE IF NOT EXIST;
 USE DB_Gestock;
 
 CREATE TABLE IF NOT EXISTS Product (

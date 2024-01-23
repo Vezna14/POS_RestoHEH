@@ -1,15 +1,13 @@
 # Gestock_prj_G2
 Projet Application Java Spring boot React pour le cours appl &amp; systèmes entreprise
 
-# Présentation du projet
-Nous allons réaliser une application qui permet de créer des commandes pour la vente de 
-produit et gérer le stock de l’entreprise.
-# Détails du projet
+## Présentation du projet
+Nous allons réaliser une application qui va permettre a un garcon de salle de prendre des commandes pour des table
+d'un fasrst food avec gestion du stock  de prendre des commande.
+## Détails du projet
+
 
 ## API Reference
-
-
-
 -----------------------------------------------------------------------------
 Order Controller
 -----------------------------------------------------------------------------
