@@ -21,6 +21,7 @@ const TableComponent = (props) => {
   const [isOccuped, setIsOccuped] = useState(false) ;
   const [showPay ,setShowPay] = useState(false);
   const [dataOrder ,setDataOrder] = useState(null);
+  const [forceUpdate, setForceUpdate] = useState(0);
 
   const navigate = useNavigate();
 
@@ -117,13 +118,14 @@ const chkTableOccupped=()=>{
                console.error("An error occurred BACKEND:", error.message);
       }
       chkTableOccupped();
-    }, [props.selectedTable ,showModal]);
+    }, [props.selectedTable ,showModal, isOccuped,forceUpdate]);
    
     const handleReleaseTable = (tableId) => {
-     
+      setForceUpdate(prevValue => prevValue + 1);
       props.markTableOccupied(tableId);
       chkTableOccupped();
     };
+    
     if (isLoading) {return (<div>loading....</div>)}
   
   if (isError) {return ( <div> error fetching data</div> )}
@@ -165,7 +167,7 @@ const chkTableOccupped=()=>{
       {showModal && <AddTableForm handleCloseModal={handleCloseModal} showModal={showModal} setShowModal={setShowModal}/>}
       
     </div>
-    {showPay && <OrderPay data={dataOrder} avoid={setShowPay} setIsOccuped={setIsOccuped} />}
+    {showPay && <OrderPay data={dataOrder} avoid={setShowPay} setIsOccuped={setIsOccuped}  handleReleaseTable={handleReleaseTable} />}
 
     </div>
     

@@ -21,6 +21,7 @@ function OrderPay (props){
                 console.log(response)
 
             });
+          //  props.handleReleaseTable(tableId)
             
             console.log('Table marquée comme occupée avec succès!');
         } catch (error) {
@@ -35,7 +36,7 @@ function OrderPay (props){
             .then(response => {
               if (response.status === 201) {
                 console.log('Order payment successful. Marking table as occupied...');
-                markTableStatus(id);
+               //markTableStatus(id);
                 console.log('Table marked as occupied successfully!');
                 props.setIsOccuped(false);
                 avoid();
