@@ -64,6 +64,7 @@ public class OrderRepository {
     private String serializeProductList(List<ProductOrder> productList) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
+            System.out.println("SerializedProductListObjectmapper: ");
             return objectMapper.writeValueAsString(productList);
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Error serializing productList to JSON", e);
