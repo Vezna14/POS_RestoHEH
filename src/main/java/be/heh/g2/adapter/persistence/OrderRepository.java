@@ -43,19 +43,28 @@ public class OrderRepository {
 
 
 
-        String sql = "INSERT INTO orders (idTable, productList, isPaid, totalPrice, date) VALUES (?, ?, ?, ?,?)";
-
-        jdbc.update(sql, order.getIdTable(), productListJson, order.isPaid(), order.getTotalPrice(),date);
+        String sql = "INSERT INTO orders (idTable, productList, isPaid, totalPrice, date) VALUES (?, CAST(? AS json), ?, ?,?)";
+        System.out.println("++++++++++++++++++++Saveing order +++++++++++++++++++++");
+        try {
+            jdbc.update(sql, order.getIdTable(), productListJson, order.isPaid(), order.getTotalPrice(), date);
+        } catch (Exception e) {
+            e.printStackTrace(); // Cela imprimera l'erreur dans la console
+        }
+        System.out.println("Savedorder in db ok");
 
         // Mettez à jour le stock de produit pour chaque ProductOrder dans la liste
+        int i =0;
         for (ProductOrder productOrder : order.getProductList()) {
             int productId = productOrder.getId();
             int quantity = productOrder.getQuantity();
             int currentStock = productRepository.getProductStock(productId);
             int newStock = currentStock - quantity;
+            System.out.println(" i: " + i+ ",Product ID: " + productId + ", Quantity: " + quantity + ", curretsto: " + currentStock+ ",new:"+newStock);
 
             // Mettez à jour le stock de produit
             productRepository.updateProductStock(productId, newStock);
+
+            i++;
         }
     }
 
