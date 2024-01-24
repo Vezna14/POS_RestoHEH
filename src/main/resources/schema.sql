@@ -2,17 +2,8 @@
 CREATE DATABASE DB_Gestock;
 
 
-CREATE DATABASE IF NOT EXIST;
-USE DB_Gestock;
-
-CREATE TABLE IF NOT EXISTS Product (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    price DOUBLE NOT NULL,
-    category VARCHAR(255),
-    stock INT NOT NULL,
-    photo VARCHAR(255)
-
+-- Utilisation de la base de données
+\c DB_Gestock;
 
 -- Création de la table Product
 CREATE TABLE Product (

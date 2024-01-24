@@ -20,7 +20,7 @@ public interface ProductManagementUseCase {
     public void modifyProduct(InputProductValidator productToModify);
 
 
-    public void deleteProduct(Product productToDelete);
+    public void deleteProduct(Product product_to_delete);
 
 
 

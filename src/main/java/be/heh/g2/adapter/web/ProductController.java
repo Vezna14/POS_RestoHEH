@@ -40,8 +40,6 @@ public class ProductController {
         }
     }
 
-
-
     @PostMapping(value = "/product")
     public ResponseEntity<String> createProduct(@RequestBody InputProductValidator productToAdd) {
         // Assuming productManagementUseCase.createProduct returns a success indicator
@@ -53,7 +51,6 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create product");
         }
     }
-
 
 
     @PutMapping("/products/{id}")

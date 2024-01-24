@@ -56,8 +56,10 @@ public class PersistenceAdapter implements IProductRepository {
     @Override
     public void removeProductFromRepository(Product productToRemove) {
         productRepository.removeProduct(productToRemove.getId());
+        }
 
-    }
+
+
     @Override
     public int getProductStock(int productId){
         try {
