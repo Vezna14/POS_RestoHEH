@@ -27,7 +27,7 @@ const EditProductform = (props) => {
     try {
       const response = await axios.put(`${apiUrl}/products/${valuEdit.id}`, valuEdit);
       console.log(response.data);
-      action(valuEdit); // Update the UI or perform other actions as needed
+      //action(valuEdit); // Update the UI or perform other actions as needed
     } catch (error) {
       console.error("Error updating product:", error);
     }
@@ -39,7 +39,7 @@ const EditProductform = (props) => {
       <input type="text" id="name" name="name" value={valuEdit.name} onChange={(e) => handleChange(e)} required />
 
       <label htmlFor="price">Prix:</label>
-      <input type="number" min={5} id="price" name="price" value={valuEdit.price} onChange={(e) => handleChange(e)} required />
+      <input type="number" step="0.01" min={4} id="price" name="price" value={valuEdit.price} onChange={(e) => handleChange(e)} required />
 
       <label htmlFor="category">Catégorie:</label>
       <input type="text" id="category" name="category" value={valuEdit.category} onChange={(e) => handleChange(e)} required />

@@ -153,7 +153,7 @@ const chkTableOccupped=()=>{
               <p className={table.status}>{table.status}</p>
             </div>
             <div>
-            {(selectedTable!= null && selectedTable.id === table.id ) && <img  src={trash} alt="Delete Item" onClick={() => handleDeleteTable(table.id)}   className="changeicone" />}
+                {(selectedTable!= null && selectedTable.id === table.id ) && <img  src={trash} alt="Delete Item" onClick={() => handleDeleteTable(table.id)}   className="changeicone" />}
                 <button id="liberer"className={table.status} disabled={!(table.status =="occupied" ||table.status =="Occupied")} onClick={() =>handleReleaseTable(table.id)}>Vider</button>
                 {table.status =='occupied' &&<button className="pay" id="pay" onClick={() => handlePrint(table.id)}>pay</button>}
 
