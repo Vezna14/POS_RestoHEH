@@ -30,6 +30,7 @@ public class OrderRowMapper implements RowMapper<Order> {
             boolean isPaid = rs.getBoolean("isPaid");
             double totalPrice = rs.getDouble("totalPrice");
             String date = rs.getString("date");
+            System.out.println("Serialrowmapper");
 
             return new Order(id, idTable, productList, isPaid, totalPrice, date);
         } catch (Exception e) {

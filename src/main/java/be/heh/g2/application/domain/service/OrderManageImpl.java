@@ -38,7 +38,9 @@ public class OrderManageImpl implements OrderManaUseCase {
             if (currentStock >= quantityOrdered) {
                 // Mettre à jour le stock dans la base de données
                 int newStock = currentStock - quantityOrdered;
+                System.out.println("updatinng stock");
                 productRepository.setQuantityInRepository(productId, newStock);
+                System.out.println("  stock update");
             } else {
                 // Stock insuffisant, renvoyer un code de statut 400 (Bad Request) avec un message explicatif
                 return new ResponseEntity<>("Stock insuffisant pour le produit: " + product.getName(), HttpStatus.BAD_REQUEST);
