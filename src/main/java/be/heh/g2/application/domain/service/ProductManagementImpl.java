@@ -41,8 +41,8 @@ public class ProductManagementImpl implements ProductManagementUseCase {
 
     }
     @Override
-    public void deleteProduct(Product product_to_delete){
-        product_repository.removeProductFromRepository(product_to_delete);
+    public void deleteProductbyID(long id_of_product_to_delete){
+        product_repository.removeProductByIdFromRepository(id_of_product_to_delete);
     }
     @Override
     public int getProductStock(int productId){

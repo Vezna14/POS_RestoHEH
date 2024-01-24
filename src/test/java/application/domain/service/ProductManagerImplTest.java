@@ -66,9 +66,9 @@ public class ProductManagerImplTest {
         category_list= new ArrayList<>(Arrays.asList("boisson","soft"));
         Product productToDelete = new Product(1,"product1", 10.0, category_list,10,"srcImg");
         // Appeler la méthode
-        product_manager_impl.deleteProduct(productToDelete);
+        product_manager_impl.deleteProductbyID(productToDelete.getId());
         // Vérifier que la méthode de suppression a été appelée avec le produit à supprimer
-        verify(product_repository).removeProductFromRepository(productToDelete);
+        verify(product_repository).removeProductByIdFromRepository(productToDelete.getId());
     }
 
     /*@Test

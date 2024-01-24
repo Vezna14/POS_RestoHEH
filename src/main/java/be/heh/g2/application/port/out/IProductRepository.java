@@ -19,7 +19,7 @@ public interface IProductRepository {
     public void modifyProductInRepository(Product productToModify);
 
 
-    public void removeProductFromRepository(Product productToRemove);
+    public void removeProductByIdFromRepository(long id_of_product_to_delete);
     public int getProductStock(int productId);
 
 }

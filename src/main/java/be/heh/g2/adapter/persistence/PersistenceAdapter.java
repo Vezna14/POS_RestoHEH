@@ -54,7 +54,17 @@ public class PersistenceAdapter implements IProductRepository {
     }
 
     @Override
-    public void removeProductFromRepository(Product productToRemove) {
+    public void removeProductByIdFromRepository(long id_of_product_to_delete) {
+        try {
+            //appel de la methode du repository pour save le product
+            productRepository.deleteProductInDB(id_of_product_to_delete);
+
+            // Log
+            System.out.println("Product deleted successfully: " + id_of_product_to_delete);
+        } catch (Exception e) {
+            // Log
+            System.err.println("Failed to delete product: " + e.getMessage());
+        }
 
     }
     @Override

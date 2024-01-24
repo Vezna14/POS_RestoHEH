@@ -58,6 +58,11 @@ public class ProductRepository {
                 productToModify.getPhoto());
     }
 
+    public void deleteProductInDB(long id_of_product_to_delete){
+        String sql = "DELETE FROM Product WHERE id = ?";
+        jdbc.update(sql, id_of_product_to_delete);
+    }
+
 }
 
 

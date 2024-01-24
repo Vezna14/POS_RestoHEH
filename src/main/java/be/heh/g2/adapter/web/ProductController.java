@@ -40,8 +40,6 @@ public class ProductController {
         }
     }
 
-
-
     @PostMapping(value = "/product")
     public ResponseEntity<String> createProduct(@RequestBody InputProductValidator productToAdd) {
         // Assuming productManagementUseCase.createProduct returns a success indicator
@@ -54,7 +52,15 @@ public class ProductController {
         }
     }
 
-
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<String> deleteProduct (@PathVariable("id") Long id){
+        try {
+                productManagementUseCase.deleteProductbyID(id);
+                return ResponseEntity.status(HttpStatus.OK).body("Product deleted successfully");
+        } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete product");
+        }
+        }
 
 
     @PutMapping("/product/{id}")
