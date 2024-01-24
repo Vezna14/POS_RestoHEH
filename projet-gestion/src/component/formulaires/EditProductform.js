@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../../style/addProductform.css';
+import axios from 'axios';
+const apiUrl = process.env.REACT_APP_API_URL;
+
 
 const EditProductform = (props) => {
   const { currentEdit, action, actionclose } = props;
@@ -18,9 +21,16 @@ const EditProductform = (props) => {
     setValuEdit({ ...valuEdit, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    action(valuEdit); // Pass the updated state to the action function
+    
+    try {
+      const response = await axios.put(`${apiUrl}/products/${valuEdit.id}`, valuEdit);
+      console.log(response.data);
+      action(valuEdit); // Update the UI or perform other actions as needed
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
   };
 
   return (

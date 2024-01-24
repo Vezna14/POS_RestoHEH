@@ -84,7 +84,7 @@ const markTableOccupied = async (tableId) => {
     }
     
 
-}, []);
+}, [listeproducts]);
 
 if (isLoading) {
 
@@ -148,7 +148,7 @@ if (isError) {
           
             <div id="newOrder">
               <CartProvider>
-                <ChangeCart products={listeproducts}/>
+                <ChangeCart setProducts={setProducts} products={listeproducts}/>
               </CartProvider>
               
             </div>

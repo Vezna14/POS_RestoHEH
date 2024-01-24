@@ -1,6 +1,8 @@
 
 import{useContext} from 'react'
 import { purchaseContext } from "../context/Mycontext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+  import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 
 function DeleteFromPurchase({ item }) {
@@ -12,7 +14,7 @@ function DeleteFromPurchase({ item }) {
   
     return (
       <button className="cart-item-delete orderdisplayPrint" onClick={handleRemoveItem}>
-        <i class="fa fa-times" aria-hidden="true"></i>
+         <FontAwesomeIcon icon={faTimes} />
       </button>
     );
   }

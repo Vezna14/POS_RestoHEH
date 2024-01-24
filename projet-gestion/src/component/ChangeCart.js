@@ -63,6 +63,10 @@ const ChangeCart = (props) => {
 
       // Fermer le formulaire après l'envoi (ajuste en fonction de ta logique)
       setIsModalOpen(false);
+      // Mettez à jour l'état des produits pour refléter la suppression
+      const updatedProducts = props.products.filter((item) => item.id !== 0);
+      props.setProducts(updatedProducts);
+      
 
       console.log('Données envoyées avec succès!');
     } catch (error) {
@@ -86,6 +90,19 @@ const ChangeCart = (props) => {
     setIsEditModalOpen(true);
     setIsDel(false);
   };
+  const handleDelete = async (productId) => {
+    try {
+      await axios.delete(`${apiUrl}/products/${productId}`);
+      console.log('Produit supprimé avec succès!');
+  
+      // Mettez à jour l'état des produits pour refléter la suppression
+      const updatedProducts = props.products.filter((item) => item.id !== productId);
+      props.setProducts(updatedProducts);
+    } catch (error) {
+      console.error('Erreur lors de la suppression du produit:', error.message);
+    }
+  };
+  
 
   return (
     <div className="change-cart-container orderdisplayPrint">
@@ -113,7 +130,7 @@ const ChangeCart = (props) => {
               <td>{item.stock}</td>
               <td>
                 <div>
-                  <img src={trash} alt="Delete Item" onClick={() => setIsDel(true)} className="changeicone" />
+                  <img src={trash} alt="Delete Item"onClick={() => handleDelete(item.id)} className="changeicone" />
                   <img src={pencil} alt="Edit Item" onClick={() => handleEdit(item)} className="changeicone" />
                 </div>
               </td>
@@ -123,6 +140,7 @@ const ChangeCart = (props) => {
       </table>
 
       <Modal
+      appElement={document.getElementById('root')}
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Add Item Modal"
@@ -134,6 +152,7 @@ const ChangeCart = (props) => {
       </Modal>
 
       <Modal
+      appElement={document.getElementById('root')}
         isOpen={isEditModalOpen}
         onRequestClose={() => setIsEditModalOpen(false)}
         contentLabel="Edit Item Modal"
