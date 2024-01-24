@@ -65,7 +65,9 @@ const TableComponent = (props) => {
 
   //delete table
   const handleDeleteTable = (id) => {
-    if(props.selectedTable?.status =="available"){
+    console.log("01 selectedTable",props.selectedTable);
+    if(props.selectedTable && (props.selectedTable.status =="Available" || props.selectedTable.status =="available")){
+   
       axios.delete(`${apiUrl}/deleteTable/${id}`)
       .then(response => {
           // Mettez à jour l'état des tables après la suppression réussie
@@ -77,6 +79,7 @@ const TableComponent = (props) => {
       });
 
     }else{
+     console.log("02 selectedTable",props.selectedTable);
       alert("cette table n'as pas encore payée")
     }
    
@@ -150,7 +153,7 @@ const chkTableOccupped=()=>{
               <p className={table.status}>{table.status}</p>
             </div>
             <div>
-                <img  src={trash} alt="Delete Item" onClick={() => handleDeleteTable(table.id)}   className="changeicone" />
+            {(selectedTable!= null && selectedTable.id === table.id ) && <img  src={trash} alt="Delete Item" onClick={() => handleDeleteTable(table.id)}   className="changeicone" />}
                 <button id="liberer"className={table.status} disabled={!(table.status =="occupied" ||table.status =="Occupied")} onClick={() =>handleReleaseTable(table.id)}>Vider</button>
                 {table.status =='occupied' &&<button className="pay" id="pay" onClick={() => handlePrint(table.id)}>pay</button>}
 
