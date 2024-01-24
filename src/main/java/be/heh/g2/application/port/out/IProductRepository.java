@@ -22,4 +22,6 @@ public interface IProductRepository {
     public void removeProductFromRepository(Product productToRemove);
     public int getProductStock(int productId);
 
+    public List<Product> fetchProductRecommandation(String foodType);
+
 }

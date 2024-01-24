@@ -4,9 +4,13 @@ import be.heh.g2.application.common.ProductNotFoundException;
 import be.heh.g2.application.domain.model.Product;
 import be.heh.g2.application.port.in.InputProductValidator;
 import be.heh.g2.application.port.in.ProductManagementUseCase;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -21,10 +25,14 @@ public class ProductController {
 
     }
 
-    //@GetMapping("/products")
-    //public List<Product> products (){
-      //  return productManagementUseCase.getAllProduct() ;
-    //}
+
+
+    @GetMapping("/recommandations")
+    public ResponseEntity<List<Product>> getRecommandations() {
+        return new ResponseEntity<>(productManagementUseCase.getProductRecommandation(), HttpStatus.OK);
+    }
+
+
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts() {
         return new ResponseEntity<>(productManagementUseCase.getAllProduct(), HttpStatus.OK);

@@ -22,9 +22,7 @@ public interface ProductManagementUseCase {
 
     public void deleteProduct(Product product_to_delete);
 
-
-
-
+    public List<Product> getProductRecommandation();
 }
 
 

@@ -46,7 +46,10 @@ public class ProductRepository {
         //return null;
         return jdbc.query(sql, new ProductRowMapper(), id);
     }
-
+    public List<Product> findProductByFoodType(String foodType){
+        String sql = "SELECT * FROM Product WHERE category LIKE ?";
+        return jdbc.query(sql, new ProductRowMapper(), "%" + foodType + "%");
+    }
     public void modifyProductInDB(Product productToModify){
         String sql = "UPDATE Product SET name = ?, category = ?, price = ?, stock = ?, photo = ? WHERE id = ?";
         jdbc.update(sql,

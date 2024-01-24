@@ -71,4 +71,9 @@ public class PersistenceAdapter implements IProductRepository {
         }
 
     }
+
+    @Override
+    public List<Product> fetchProductRecommandation(String foodType) {
+        return productRepository.findProductByFoodType(foodType);
+    }
 }
