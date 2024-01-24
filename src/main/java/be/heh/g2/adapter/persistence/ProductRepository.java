@@ -48,15 +48,22 @@ public class ProductRepository {
     }
 
     public void modifyProductInDB(Product productToModify){
-        String sql = "UPDATE Product SET id = ?, name = ?, category = ?, price = ?, stock = ?, photo = ? WHERE id="+ productToModify.getId();
+        String sql = "UPDATE Product SET name = ?, category = ?, price = ?, stock = ?, photo = ? WHERE id = ?";
         jdbc.update(sql,
-                productToModify.getId(),
                 productToModify.getName(),
                 String.join(", ", productToModify.getCategory()),
                 productToModify.getPrice(),
                 productToModify.getStock(),
-                productToModify.getPhoto());
+                productToModify.getPhoto(),
+                productToModify.getId());
     }
+
+
+    public void removeProduct(long productid) {
+        String sql = "DELETE FROM Product WHERE id = ?";
+        jdbc.update(sql,productid);
+    }
+
 
 }
 

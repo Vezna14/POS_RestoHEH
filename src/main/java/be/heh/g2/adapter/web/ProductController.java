@@ -56,14 +56,29 @@ public class ProductController {
 
 
 
-
-    @PutMapping("/product/{id}")
-    public ResponseEntity<String> PUT(@RequestBody InputProductValidator productToModify){
-
+    @PutMapping("/products/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable Long id, @RequestBody InputProductValidator productToModify) {
+        try {
             productManagementUseCase.modifyProduct(productToModify);
-            return ResponseEntity.status(HttpStatus.OK).body("Product created successfully");
-
+            return ResponseEntity.status(HttpStatus.OK).body("Product updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update product");
+        }
     }
+
+
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
+        try {
+            Product productToDelete = productManagementUseCase.getProductById(id);
+            productManagementUseCase.deleteProduct(productToDelete);
+            return ResponseEntity.status(HttpStatus.OK).body("Product deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete product");
+        }
+    }
+
+
 
 
 }
