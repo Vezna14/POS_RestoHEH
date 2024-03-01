@@ -1,0 +1,143 @@
+[
+    {
+      "id": 1,
+      "name": "Salade fraîche",
+      "minTemperature": 0,
+      "maxTemperature": 15,
+      "image": "https://image.freepik.com/photos-gratuite/salade-cesar-au-poulet-vue-dessus-fond-noir_275899-327.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Soupe chaude",
+      "minTemperature": 10,
+      "maxTemperature": 25,
+      "image": "https://img.freepik.com/photos-gratuite/delicieuse-soupe-chaude-fraiche-tomate-viande-dans-assiette-ceramique-soupe-meli-melo_73989-18899.jpg?size=626&ext=jpg"
+    },
+    {
+      "id": 3,
+      "name": "Pâtes à la bolognaise",
+      "minTemperature": 20,
+      "maxTemperature": 30,
+      "image": "https://img.freepik.com/photos-gratuite/pates-spaghetti-bolognaises-tomate-viande-hachee-parmesan-basilic-fond-noir-vue-dessus_89816-10492.jpg?size=626&ext=jpg"
+    },
+    {
+      "id": 4,
+      "name": "Grillades d'été",
+      "minTemperature": 25,
+      "maxTemperature": 35,
+      "image": "https://www.gastronomiac.com/wp/wp-content/uploads/2019/05/grillades.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Poulet rôti",
+      "minTemperature": 30,
+      "maxTemperature": 40,
+      "image": "poulet.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Salade de fruits frais",
+      "minTemperature": 35,
+      "maxTemperature": 45,
+      "image": "salade_fruits.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Glace à la vanille",
+      "minTemperature": 40,
+      "maxTemperature": 60,
+      "image": "glace.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Thé glacé",
+      "minTemperature": 50,
+      "maxTemperature": 70,
+      "image": "the_glace.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Smoothie rafraîchissant",
+      "minTemperature": 60,
+      "maxTemperature": 85,
+      "image": "smoothie.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Sorbet aux fruits",
+      "minTemperature": 25,
+      "maxTemperature": 30,
+      "image": "sorbet.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Pizza maison",
+      "minTemperature": 8,
+      "maxTemperature": 20,
+      "image": "pizza.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Barbecue estival",
+      "minTemperature": 25,
+      "maxTemperature": 40,
+      "image": "barbecue.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Salade de riz",
+      "minTemperature": 19,
+      "maxTemperature": 105,
+      "image": "salade_riz.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Gâteau au chocolat",
+      "minTemperature": 10,
+      "maxTemperature": 20,
+      "image": "gateau_chocolat.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Café chaud",
+      "minTemperature": 10,
+      "maxTemperature": 30,
+      "image": "cafe.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Chocolat chaud",
+      "minTemperature": 20,
+      "maxTemperature": 40,
+      "image": "chocolat_chaud.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Tarte aux fruits",
+      "minTemperature": 20,
+      "maxTemperature": 35,
+      "image": "tarte_fruits.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Margarita glacée",
+      "minTemperature": 26,
+      "maxTemperature": 35,
+      "image": "margarita.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Tartelette au citron",
+      "minTemperature": 26,
+      "maxTemperature": 35,
+      "image": "tarte_citron.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Smoothie aux agrumes",
+      "minTemperature": 16,
+      "maxTemperature": 40,
+      "image": "smoothie_agrumes.jpg"
+    }
+  ]
+  
