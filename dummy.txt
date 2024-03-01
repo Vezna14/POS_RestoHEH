@@ -1,0 +1,10 @@
+ Le volume dans le lecteur C s'appelle Windows
+ Le num‚ro de s‚rie du volume est 90FD-3BAC
+
+ R‚pertoire de C:\Users\navez\Desktop\POS_Resto_HEH
+
+01/03/2024  19:25    <DIR>          .
+01/03/2024  19:25    <DIR>          ..
+01/03/2024  19:25                 0 dummy.txt
+               1 fichier(s)                0 octets
+               2 R‚p(s)  71.704.928.256 octets libres
