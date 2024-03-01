@@ -1,0 +1,103 @@
+.table-container {
+  display:flex;
+  justify-content: center;
+    overflow-x: auto;
+    color: rgb(31, 30, 27);
+    padding: 20px; /* Ajoutez une marge pour plus d'esthétique */
+  }
+  
+  .table-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content; /* Pour éviter le saut de ligne */
+  }
+  
+  .table {
+    height:100px;
+    border: 1px solid #ddd;
+    padding: 20px; /* Ajustez la taille des tables selon vos préférences */
+    margin: 5px;
+    border-radius:5px;
+    text-align: center;
+    background-image:url('../../assert/svg/3.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: large;
+   box-shadow: rgb(0,0,0,0.24) 0px 0.5px 5px;
+    color: #1ae008;
+  }
+  .fontblack{
+    margin-top:15px;
+    background-color: #000;
+    color: #fff;
+  }
+  .available ,.Available{
+    margin-top:25px;
+    width: 70px;
+    padding:1px;
+    text-align: center;
+    background-color:rgb(80, 233, 80);
+    color: #fff;
+    border-radius: 5px;
+    
+  }
+  .occupied{
+    margin-top:25px;
+    padding:2px;
+    text-align: center;
+    background-color:rgba(235, 14, 14);
+    color: #fff;
+    border-radius: 5px;
+  }
+  #liberer,#pay{
+    border-radius: 5px;
+    width:40px;
+    height:25px;
+  }
+  
+  .add-table {
+    border: 2px solid #222;
+    padding: 20px; /* Ajustez la taille du bouton rond selon vos préférences */
+    margin: 5px;
+    height: 55%;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #000;
+    font-weight: bolder;
+  }
+  
+  .table.selected {
+    background-color: #f0f0f0; /* Couleur de fond pour la table sélectionnée */
+    border: 2px solid #007bff; /* Bordure pour la table sélectionnée */
+    color: #007bff; /* Couleur du texte pour la table sélectionnée */
+  }
+  button.occupied{
+    
+    text-align: center;
+    border-radius:20px;
+    background-color:green;
+    color: #fff;
+  }
+  button.available ,button.Available{
+    border-radius:20px;
+    background-color:gray;
+    color: #fff;
+  }
+  
+  @media print {
+    .orderdisplayPrint{
+     display: none;
+   }
+   .orderpurchase {
+     margin:0 auto ;
+   }
+ 
+ }
+  
+  
